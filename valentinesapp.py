@@ -1,30 +1,40 @@
 import streamlit as st
 
+# --- Page Config ---
 st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
 
-# --- CSS for animations ---
+# --- CSS ---
 st.markdown("""
 <style>
-/* Background gradient */
+/* Full-page flex to center everything */
 .stApp {
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical centering */
+    align-items: center;     /* horizontal centering */
+    height: 100vh;           /* full viewport height */
+    margin: 0;
 }
 
 /* Heading */
-h1 {
-    color: #b30059;
+.landing-heading {
+    color: #b30059; /* dark pink */
     font-size: 3rem;
     font-weight: 900;
+    margin-bottom: 1rem;
+    text-align: center;
     animation: fadeIn 2s ease-in-out;
 }
 
 /* Subtext */
-h3 {
+.landing-subtext {
     color: #b30059;
     font-size: 2rem;
     font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
     animation: fadeIn 2.5s ease-in-out;
 }
 
@@ -36,7 +46,7 @@ div.stButton > button {
     font-weight: 700;
     background-color: #ff8da4 !important;
     color: #fff !important;
-    margin: 10px !important;
+    margin: 0 10px !important;
     transition: transform 0.3s, background-color 0.3s;
 }
 div.stButton > button:hover {
@@ -45,13 +55,12 @@ div.stButton > button:hover {
     cursor: pointer;
 }
 
-/* Floating hearts */
+/* Floating hearts animation */
 @keyframes float {
     0% { transform: translateY(0px); opacity: 1; }
-    50% { transform: translateY(-20px); opacity: 0.7; }
+    50% { transform: translateY(-15px); opacity: 0.7; }
     100% { transform: translateY(0px); opacity: 1; }
 }
-
 .floating-heart {
     color: #ff5c7a;
     font-size: 2rem;
@@ -60,7 +69,7 @@ div.stButton > button:hover {
     margin: 0 5px;
 }
 
-/* Fade in animation for text */
+/* Fade in for heading and subtext */
 @keyframes fadeIn {
     0% {opacity:0;}
     100% {opacity:1;}
@@ -77,10 +86,11 @@ def go_to(page):
 
 # --- HOME PAGE ---
 if st.session_state.page == "home":
-    st.markdown('<h1>Hey you <span class="floating-heart">❤️</span><span class="floating-heart">💖</span><span class="floating-heart">💘</span></h1>', unsafe_allow_html=True)
-    st.markdown('<h3>Open this… if you dare 😏</h3>', unsafe_allow_html=True)
+    st.markdown('<div class="landing-heading">Hey you <span class="floating-heart">❤️</span><span class="floating-heart">💖</span></div>', unsafe_allow_html=True)
+    st.markdown('<div class="landing-subtext">Open this… if you dare 😏</div>', unsafe_allow_html=True)
 
-    col1, col2, col3, col4 = st.columns(4)
+    # Horizontal buttons
+    col1, col2, col3, col4 = st.columns([1,1,1,1], gap="medium")
     if col1.button("💌 A Message"):
         go_to("message")
     if col2.button("🎵 My Song for You"):
@@ -92,13 +102,13 @@ if st.session_state.page == "home":
 
 # --- MESSAGE PAGE ---
 elif st.session_state.page == "message":
-    st.markdown("<h3>So… I was going to play it cool. But that’s clearly not happening 😏 I like you ❤️</h3>", unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">So… I was going to play it cool. But that’s clearly not happening 😏 I like you ❤️</div>', unsafe_allow_html=True)
     if st.button("Back"):
         go_to("home")
 
 # --- PHOTOS PAGE ---
 elif st.session_state.page == "photos":
-    st.markdown("<h3>📸 Our Moments ❤️</h3>", unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">📸 Our Moments ❤️</div>', unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     col1.image("photo1.jpeg")
     col1.image("photo3.jpeg")
@@ -109,13 +119,13 @@ elif st.session_state.page == "photos":
 
 # --- SONG PAGE ---
 elif st.session_state.page == "song":
-    st.markdown("<h3>🎵 My Song for You… reminds me of you ❤️</h3>", unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">🎵 My Song for You… reminds me of you ❤️</div>', unsafe_allow_html=True)
     if st.button("Back"):
         go_to("home")
 
 # --- EXTRA PAGE ---
 elif st.session_state.page == "extra":
-    st.markdown("<h3>✨ Don’t Press This… 😏</h3>", unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">✨ Don’t Press This… 😏</div>', unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     if col1.button("Do Not Press 😏"):
         col1.image("funny.jpeg")
