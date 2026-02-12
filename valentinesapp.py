@@ -12,30 +12,25 @@ st.markdown("""
     padding-bottom: 0rem;
 }
 
-/* Vertical centering: content further down */
-.block-container {
-    padding-top: 30vh;  /* moved further down */
-    padding-bottom: 5vh;
-}
-
-/* App container */
+/* Full-page gradient background */
 .stApp {
     font-family: 'Comic Sans MS', cursive, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 
-    /* Multi-shade pink gradient */
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 30%, #ffb6c1 60%, #ff8da4 100%);
+}
 
-    /* Optional subtle repeating hearts overlay */
-    background-image: url('https://i.ibb.co/9ytW7Fv/pattern.png');
-    background-repeat: repeat;
-    background-size: 50px 50px;
-
-    position: relative;
+/* Remove white container background and adjust vertical centering */
+.block-container {
+    background-color: transparent;
+    padding-top: 30vh;
+    padding-bottom: 5vh;
 }
 
 /* Heading */
