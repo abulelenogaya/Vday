@@ -12,72 +12,72 @@ import streamlit as st
 st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="centered")
 
 # --- Custom CSS ---
-st.markdown("""
-<style>
-/* Background */
-.stApp {
-    background-color: #FFF5F7;
-    font-family: 'Helvetica', sans-serif;
-    position: relative;
-    overflow: hidden;
-}
+#st.markdown("""
+#<style>
+#/* Background */
+#.stApp {
+   # background-color: #FFF5F7;
+   # font-family: 'Helvetica', sans-serif;
+   # position: relative;
+   # overflow: hidden;
+#}
 
-/* Floating hearts */
-@keyframes floatUp {
-    0% {transform: translateY(0px); opacity:1;}
-    100% {transform: translateY(-800px); opacity:0;}
-}
-.heart {
-    position: absolute;
-    font-size: 2rem;
-    animation: floatUp 8s linear infinite;
-    opacity: 0;
-}
-.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
-.heart:nth-child(3) { left: 50%; animation-delay: 4s; }
-.heart:nth-child(4) { left: 70%; animation-delay: 1s; }
-.heart:nth-child(5) { left: 90%; animation-delay: 3s; }
+#/* Floating hearts */
+#@keyframes floatUp {
+ #   0% {transform: translateY(0px); opacity:1;}
+  #  100% {transform: translateY(-800px); opacity:0;}
+#}
+#.heart {
+   # position: absolute;
+   # font-size: 2rem;
+   # animation: floatUp 8s linear infinite;
+   # opacity: 0;
+#}
+#.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+#.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+#.heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+#.heart:nth-child(4) { left: 70%; animation-delay: 1s; }
+#.heart:nth-child(5) { left: 90%; animation-delay: 3s; }
 
-/* Cards */
-.card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0px 4px 20px rgba(0,0,0,0.05);
-    margin-bottom: 1.5rem;
-    animation: fadeIn 1s ease forwards;
-}
+#/* Cards */
+#.card {
+   # background-color: white;
+   # padding: 2rem;
+   # border-radius: 20px;
+   # box-shadow: 0px 4px 20px rgba(0,0,0,0.05);
+   # margin-bottom: 1.5rem;
+   # animation: fadeIn 1s ease forwards;
+#}
 
-/* Fade-in animation */
-@keyframes fadeIn {
-    from {opacity:0; transform: translateY(20px);}
-    to {opacity:1; transform: translateY(0);}
-}
+#/* Fade-in animation */
+#@keyframes fadeIn {
+#    from {opacity:0; transform: translateY(20px);}
+ #   to {opacity:1; transform: translateY(0);}
+#}
 
-/* Center */
-.center { text-align: center; }
+#/* Center */
+#.center { text-align: center; }
 
-/* Buttons */
-button {
-    border-radius: 12px !important;
-    padding: 0.8rem 1.5rem !important;
-    font-size: 1.1rem;
-    transition: transform 0.2s;
-}
-button:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-}
-</style>
+#/* Buttons */
+#button {
+  #  border-radius: 12px !important;
+ #   padding: 0.8rem 1.5rem !important;
+#    font-size: 1.1rem;
+#    transition: transform 0.2s;
+#}
+#button:hover {
+#    transform: scale(1.05);
+#    cursor: pointer;
+#}
+#</style>
 
-<!-- Floating hearts HTML -->
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
-<div class="heart">❤️</div>
-""", unsafe_allow_html=True)
+#<!-- Floating hearts HTML -->
+#<div class="heart">❤️</div>
+#<div class="heart">❤️</div>
+#<div class="heart">❤️</div>
+#<div class="heart">❤️</div>
+#<div class="heart">❤️</div>
+#""", unsafe_allow_html=True)
 
 # --- Session State ---
 if "page" not in st.session_state:
