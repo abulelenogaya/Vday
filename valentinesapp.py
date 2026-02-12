@@ -6,7 +6,7 @@ st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
 # --- CSS Styling ---
 st.markdown("""
 <style>
-/* Soft pink ombre background, full screen */
+/* Soft pink ombre background */
 .stApp {
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
     font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -16,7 +16,7 @@ st.markdown("""
     height: 100vh;
 }
 
-/* Pink border “board” around landing content */
+/* Pink board enclosing landing content */
 .landing-board {
     border: 5px solid #ff8da4;
     border-radius: 25px;
@@ -28,20 +28,22 @@ st.markdown("""
     box-shadow: 0 8px 20px rgba(255,140,164,0.3);
 }
 
-/* Landing page headings */
+/* Heading */
 .landing-heading {
     color: #b30059;
     font-size: 3rem;
     font-weight: 900;
     margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-/* Landing page subtext */
+/* Subtext */
 .landing-text {
     color: #b30059;
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 3rem;
+    text-align: center;
 }
 
 /* General page text */
@@ -53,7 +55,7 @@ st.markdown("""
     text-align: center;
 }
 
-/* Streamlit buttons styling */
+/* Streamlit buttons */
 div.stButton > button {
     border-radius: 20px !important;
     padding: 1.2rem 2.5rem !important;
