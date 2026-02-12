@@ -27,31 +27,26 @@ st.markdown("""
     margin: 0;
     padding: 0;
 
-    /* Animated gradient background */
-    background: linear-gradient(270deg, #ffe6f0, #ffc0cb, #ffb6c1, #ffe6f0);
-    background-size: 800% 800%;
-    animation: gradientShift 15s ease infinite;
+    /* Soft pink gradient background */
+    background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
     position: relative;
     overflow: hidden;
 }
 
-/* Animated gradient keyframes */
-@keyframes gradientShift {
-    0% {background-position:0% 50%;}
-    50% {background-position:100% 50%;}
-    100% {background-position:0% 50%;}
-}
-
-/* Floating hearts behind content */
-.stApp::after {
-    content: "❤️ 💖 ✨";
+/* Floating hearts and sparkles behind content */
+.floating-bg {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
     font-size: 3rem;
-    opacity: 0.03;
+    opacity: 0.15;
+    animation: floatShapes 8s ease-in-out infinite;
     pointer-events: none;
     z-index: -1;
+}
+
+@keyframes floatShapes {
+    0% { transform: translateY(0px); opacity: 0.1; }
+    50% { transform: translateY(-40px); opacity: 0.25; }
+    100% { transform: translateY(0px); opacity: 0.1; }
 }
 
 /* Heading */
@@ -111,6 +106,15 @@ div.stButton > button:hover {
     100% {opacity:1;}
 }
 </style>
+""", unsafe_allow_html=True)
+
+# --- Add floating background shapes in HTML ---
+st.markdown("""
+<div class="floating-bg" style="top:10%; left:20%;">❤️</div>
+<div class="floating-bg" style="top:30%; left:60%;">💖</div>
+<div class="floating-bg" style="top:50%; left:40%;">✨</div>
+<div class="floating-bg" style="top:70%; left:80%;">❤️</div>
+<div class="floating-bg" style="top:85%; left:25%;">💖</div>
 """, unsafe_allow_html=True)
 
 # --- Session State ---
