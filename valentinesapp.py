@@ -118,11 +118,31 @@ div.stButton > button:hover {
 .fade-part:nth-child(10) { animation-delay: 9.5s; }
 
 /* Carousel image fade and size */
+.carousel-container {
+    position: relative;
+    text-align: center;
+    max-width: 60vw;
+    margin: auto;
+}
 .carousel-image {
-    transition: opacity 1s ease-in-out;
-    max-height: 50vh; /* shrink to fit screen */
+    transition: opacity 0.5s ease-in-out;
+    max-height: 35vh; /* significantly smaller */
     object-fit: contain;
     margin: auto;
+}
+
+/* Arrow buttons overlay */
+.arrow-buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 20px; /* small space between arrows */
+}
+.arrow-buttons button {
+    font-size: 2rem !important;
+    padding: 0.5rem 1rem !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -176,14 +196,13 @@ elif st.session_state.page == "message":
     if st.button("Back"):
         go_to("home")
 
-# --- PHOTOS PAGE (Carousel with arrows) ---
+# --- PHOTOS PAGE (Carousel with centered arrows) ---
 elif st.session_state.page == "photos":
     st.markdown(
         '<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:1rem;">📸 Our Moments ❤️</div>',
         unsafe_allow_html=True
     )
 
-    # List of photos and captions
     photos = [
         ("photo1.jpeg", "First cute moment"),
         ("photo2.jpeg", "Our silly faces"),
@@ -192,16 +211,22 @@ elif st.session_state.page == "photos":
     ]
     current_photo, caption = photos[st.session_state.photo_index]
 
+    # Carousel container
+    st.markdown('<div class="carousel-container">', unsafe_allow_html=True)
     st.image(current_photo, use_column_width=True, caption=caption, output_format="auto")
 
-    # Arrows for navigation
-    col1, col2, col3 = st.columns([1,1,1])
-    if col1.button("←"):
-        st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
-    if col2.button("Back"):
+    # Overlay arrows
+    cols = st.columns([1,1,1])
+    with cols[1]:
+        if st.button("←"):
+            st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
+        st.write("")  # small spacing
+        if st.button("→"):
+            st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    if st.button("Back"):
         go_to("home")
-    if col3.button("→"):
-        st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
 
 # --- SONG PAGE ---
 elif st.session_state.page == "song":
