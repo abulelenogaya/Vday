@@ -12,7 +12,7 @@ st.markdown("""
     padding-bottom: 0rem;
 }
 
-/* Adjust vertical centering: more top padding to move content down */
+/* Vertical centering: content further down */
 .block-container {
     padding-top: 30vh;  /* moved further down */
     padding-bottom: 5vh;
@@ -26,9 +26,16 @@ st.markdown("""
     align-items: center;
     margin: 0;
     padding: 0;
-    
-    /* Gradient background */
-    background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
+
+    /* Multi-shade pink gradient */
+    background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 30%, #ffb6c1 60%, #ff8da4 100%);
+
+    /* Optional subtle repeating hearts overlay */
+    background-image: url('https://i.ibb.co/9ytW7Fv/pattern.png');
+    background-repeat: repeat;
+    background-size: 50px 50px;
+
+    position: relative;
 }
 
 /* Heading */
