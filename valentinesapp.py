@@ -1,53 +1,60 @@
 import streamlit as st
 
 # --- Page Config ---
-st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="centered")
+st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
 
-# --- Soft Pink Theme & Decorative Hearts ---
+# --- Soft Pink Theme & Playful Styling ---
 st.markdown("""
 <style>
 /* Background soft pink gradient */
 .stApp {
     background: linear-gradient(135deg, #ffe6f0 0%, #fff0f5 100%);
-    font-family: 'Helvetica', sans-serif;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
     color: #333333;  /* dark text for readability */
 }
 
-/* Card styling */
-.card {
-    background-color: #ffffffcc;  /* slightly transparent white */
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0px 6px 25px rgba(255, 182, 193, 0.3); /* soft pink shadow */
+/* Centered headings */
+.center { 
+    text-align: center; 
     margin-bottom: 2rem;
-}
-
-/* Center alignment */
-.center { text-align: center; }
-
-/* Streamlit button overrides */
-div.stButton > button {
-    border-radius: 15px !important;
-    padding: 1rem 2rem !important;
-    font-size: 1.2rem !important;
-    font-weight: 600;
-    background-color: #ff8da4 !important;  /* bright pink */
-    color: #fff !important;  /* white text */
-    width: 180px;  /* uniform width */
-    margin: 0 10px;  /* horizontal spacing */
-    transition: transform 0.2s, background-color 0.2s;
-}
-div.stButton > button:hover {
-    background-color: #ff5c7a !important;  /* darker pink on hover */
-    transform: scale(1.05);
-    cursor: pointer;
 }
 
 /* Decorative hearts */
 .hearts {
     text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Streamlit button styling */
+div.stButton > button {
+    border-radius: 20px !important;
+    padding: 1.2rem 2.5rem !important;
+    font-size: 1.4rem !important;
+    font-weight: 600;
+    background-color: #ff8da4 !important;  /* bright pink */
+    color: #fff !important;  /* white text */
+    margin: 0 15px !important;  /* horizontal spacing */
+    transition: transform 0.2s, background-color 0.2s;
+}
+div.stButton > button:hover {
+    background-color: #ff5c7a !important;  /* darker pink hover */
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+}
+
+/* Text spacing for all pages */
+.page-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -62,14 +69,13 @@ def go_to(page_name):
 
 # --- HOME PAGE ---
 if st.session_state.page == "home":
-    st.markdown("<div class='card center'>", unsafe_allow_html=True)
     st.markdown("<div class='hearts'>💖 💕 💗 💖 💕 💗 💖</div>", unsafe_allow_html=True)
-    st.markdown("## Hey you ❤️")
-    st.markdown("Open this… if you dare 😏")
+    st.markdown("<h1 style='text-align:center; font-size:3rem;'>Hey you ❤️</h1>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align:center; font-size:1.8rem;'>Open this… if you dare 😏</h3>", unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Horizontal buttons using columns
-    col1, col2, col3 = st.columns([1,1,1])
+    # Horizontal layout with 4 buttons centered
+    col1, col2, col3, col4 = st.columns([1,1,1,1])
     with col1:
         if st.button("💌 A Message"):
             go_to("message")
@@ -79,38 +85,16 @@ if st.session_state.page == "home":
     with col3:
         if st.button("📸 Our Moments"):
             go_to("photos")
-
-    # Extra button below
-    if st.button("✨ Something Extra"):
-        go_to("extra")
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# --- MENU PAGE ---
-elif st.session_state.page == "menu":
-    st.markdown("<div class='center'>", unsafe_allow_html=True)
-    st.markdown("## Choose something 💌")
-    st.markdown("<br>", unsafe_allow_html=True)
-
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("💌 A Message"):
-            go_to("message")
-        if st.button("🎵 My Song for You"):
-            go_to("song")
-    with col2:
-        if st.button("📸 Our Moments"):
-            go_to("photos")
+    with col4:
         if st.button("✨ Something Extra"):
             go_to("extra")
 
-    st.markdown("</div>", unsafe_allow_html=True)
-
 # --- MESSAGE PAGE ---
 elif st.session_state.page == "message":
-    st.markdown("<div class='card'>", unsafe_allow_html=True)
-    st.markdown("## 💌 For You")
+    st.markdown("<div class='center'>", unsafe_allow_html=True)
+    st.markdown("<h2 style='font-size:2rem;'>💌 For You</h2>", unsafe_allow_html=True)
     st.markdown("""
+<div class='page-text'>
 So… I was going to play it cool.  
 
 But that’s clearly not happening 😏  
@@ -124,43 +108,56 @@ The tension. The ease. The way it feels exciting but natural.
 Just know… I’m very aware of the effect you have on me.  
 
 And I don’t hate it. ❤️
-""")
-    st.markdown("</div>", unsafe_allow_html=True)
+</div>
+""", unsafe_allow_html=True)
+
     if st.button("Back"):
-        go_to("menu")
+        go_to("home")
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # --- PHOTOS PAGE ---
 elif st.session_state.page == "photos":
-    st.markdown("## 📸 Our Moments")
-    st.markdown("Little memories, just for us.")
+    st.markdown("<div class='center'>", unsafe_allow_html=True)
+    st.markdown("<h2 style='font-size:2rem;'>📸 Our Moments</h2>", unsafe_allow_html=True)
+    st.markdown("<div class='page-text'>Little memories, just for us ❤️</div>", unsafe_allow_html=True)
 
+    # Split images into 2 columns for balance
     col1, col2 = st.columns(2)
     with col1:
         st.image("photo1.jpeg", caption="This smile? Dangerous 😏")
-        st.image("photo2.jpeg", caption="We look a little too good here ❤️")
-    with col2:
         st.image("photo3.jpeg", caption="I replay this day sometimes 🫶")
+    with col2:
+        st.image("photo2.jpeg", caption="We look a little too good here ❤️")
         st.image("photo4.jpeg", caption="You. Just… you 😘")
 
     if st.button("Back"):
-        go_to("menu")
+        go_to("home")
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # --- SONG PAGE ---
 elif st.session_state.page == "song":
-    st.markdown("## 🎵 My Song for You")
-    st.markdown("This one reminds me of you… ❤️")
-    st.markdown("""
-It talks about someone who makes the singer smile and feel loved… kind of like how you make me feel 😏  
+    st.markdown("<div class='center'>", unsafe_allow_html=True)
+    st.markdown("<h2 style='font-size:2rem;'>🎵 My Song for You</h2>", unsafe_allow_html=True)
+    st.markdown("<div class='page-text'>This one reminds me of you… ❤️<br>It talks about someone who makes the singer smile and feel loved… kind of like how you make me feel 😏<br>Soft, a little intense… just like the effect you have on me.</div>", unsafe_allow_html=True)
 
-Soft, a little intense… just like the effect you have on me.
-""")
     if st.button("Back"):
-        go_to("menu")
+        go_to("home")
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # --- EXTRA PAGE ---
 elif st.session_state.page == "extra":
-    st.markdown("## ✨ Don’t Press This…")
-    if st.button("Do Not Press 😏"):
-        st.image("funny.jpeg", caption="Couldn’t resist… this is too good 😏 You make me smile every time ❤️")
+    st.markdown("<div class='center'>", unsafe_allow_html=True)
+    st.markdown("<h2 style='font-size:2rem;'>✨ Don’t Press This…</h2>", unsafe_allow_html=True)
+    st.markdown("<div class='page-text'>You’ve been warned 😏</div>", unsafe_allow_html=True)
+
+    # Horizontal layout for extra content
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Do Not Press 😏"):
+            st.image("funny.jpeg", caption="Couldn’t resist… this is too good 😏 You make me smile every time ❤️")
+    with col2:
+        st.markdown("<div class='page-text'>Just for fun… nothing too serious 😉</div>", unsafe_allow_html=True)
+
     if st.button("Back"):
-        go_to("menu")
+        go_to("home")
+    st.markdown("</div>", unsafe_allow_html=True)
