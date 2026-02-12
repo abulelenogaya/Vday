@@ -14,7 +14,7 @@ st.markdown("""
 
 /* Add top padding to simulate vertical centering */
 .block-container {
-    padding-top: 25vh; /* adjust to visually center content */
+    padding-top: 25vh; /* visually center content */
     padding-bottom: 5vh;
 }
 
@@ -44,7 +44,7 @@ st.markdown("""
     color: #b30059;
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;  /* increased to move buttons lower */
     text-align: center;
     animation: fadeIn 2.5s ease-in-out;
 }
