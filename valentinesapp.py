@@ -27,26 +27,16 @@ st.markdown("""
     margin: 0;
     padding: 0;
 
-    /* Soft pink gradient background */
+    /* Gradient background */
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
+
+    /* Overlay repeating heart pattern */
+    background-image: url('https://i.ibb.co/9ytW7Fv/pattern.png'); /* tiny hearts */
+    background-repeat: repeat;
+    background-size: 50px 50px;
+
     position: relative;
     overflow: hidden;
-}
-
-/* Floating hearts and sparkles behind content */
-.floating-bg {
-    position: absolute;
-    font-size: 3rem;
-    opacity: 0.15;
-    animation: floatShapes 8s ease-in-out infinite;
-    pointer-events: none;
-    z-index: -1;
-}
-
-@keyframes floatShapes {
-    0% { transform: translateY(0px); opacity: 0.1; }
-    50% { transform: translateY(-40px); opacity: 0.25; }
-    100% { transform: translateY(0px); opacity: 0.1; }
 }
 
 /* Heading */
@@ -106,15 +96,6 @@ div.stButton > button:hover {
     100% {opacity:1;}
 }
 </style>
-""", unsafe_allow_html=True)
-
-# --- Add floating background shapes in HTML ---
-st.markdown("""
-<div class="floating-bg" style="top:10%; left:20%;">❤️</div>
-<div class="floating-bg" style="top:30%; left:60%;">💖</div>
-<div class="floating-bg" style="top:50%; left:40%;">✨</div>
-<div class="floating-bg" style="top:70%; left:80%;">❤️</div>
-<div class="floating-bg" style="top:85%; left:25%;">💖</div>
 """, unsafe_allow_html=True)
 
 # --- Session State ---
