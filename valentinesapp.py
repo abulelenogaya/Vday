@@ -6,19 +6,19 @@ st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
 # --- CSS ---
 st.markdown("""
 <style>
-/* Remove Streamlit default top padding */
+/* Remove default top padding */
 .css-18e3th9 {
     padding-top: 0rem;
     padding-bottom: 0rem;
 }
 
-/* Content vertical centering */
+/* Vertical centering */
 .block-container {
     padding-top: 20vh;
     padding-bottom: 5vh;
 }
 
-/* Full-page flex for horizontal centering */
+/* App container */
 .stApp {
     font-family: 'Comic Sans MS', cursive, sans-serif;
     display: flex;
@@ -26,16 +26,9 @@ st.markdown("""
     align-items: center;
     margin: 0;
     padding: 0;
-
+    
     /* Gradient background */
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
-
-    /* Static repeating heart pattern */
-    background-image: url('https://i.ibb.co/9ytW7Fv/pattern.png'); /* subtle hearts */
-    background-repeat: repeat;
-    background-size: 50px 50px;
-
-    position: relative;
 }
 
 /* Heading */
@@ -53,9 +46,23 @@ st.markdown("""
     color: #b30059;
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 6rem;  /* buttons lower */
+    margin-bottom: 6rem;
     text-align: center;
     animation: fadeIn 2.5s ease-in-out;
+}
+
+/* Floating emojis in heading/subtext */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+.floating-heart {
+    color: #ff5c7a;
+    font-size: 2rem;
+    display: inline-block;
+    animation: float 3s infinite ease-in-out;
+    margin: 0 5px;
 }
 
 /* Buttons */
@@ -70,12 +77,12 @@ div.stButton > button {
     transition: transform 0.3s, background-color 0.3s;
 }
 
-/* Hover effect + subtle pulse */
+/* Hover + pulse */
 div.stButton > button:hover {
     background-color: #ff5c7a !important;
     transform: scale(1.1);
-    cursor: pointer;
     animation: pulse 1s infinite;
+    cursor: pointer;
 }
 
 /* Pulse animation */
@@ -85,21 +92,7 @@ div.stButton > button:hover {
     100% { transform: scale(1.1); }
 }
 
-/* Floating hearts in heading */
-@keyframes float {
-    0% { transform: translateY(0px); opacity: 1; }
-    50% { transform: translateY(-15px); opacity: 0.7; }
-    100% { transform: translateY(0px); opacity: 1; }
-}
-.floating-heart {
-    color: #ff5c7a;
-    font-size: 2rem;
-    display: inline-block;
-    animation: float 3s infinite ease-in-out;
-    margin: 0 5px;
-}
-
-/* Fade in for heading and subtext */
+/* Fade in */
 @keyframes fadeIn {
     0% {opacity:0;}
     100% {opacity:1;}
