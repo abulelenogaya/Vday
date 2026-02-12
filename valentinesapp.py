@@ -6,33 +6,47 @@ st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
 # --- CSS Styling ---
 st.markdown("""
 <style>
-/* Soft pink ombre background */
+/* Soft pink ombre background, full screen */
 .stApp {
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
     font-family: 'Comic Sans MS', cursive, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Landing page board */
+/* Pink border “board” around landing content */
 .landing-board {
     border: 5px solid #ff8da4;
     border-radius: 25px;
-    padding: 3rem;
+    padding: 4rem 3rem;
     max-width: 900px;
-    margin: 50px auto;  /* center */
+    width: 90%;
     background: linear-gradient(135deg, #fff0f5 0%, #ffe6f0 100%);
     text-align: center;
+    box-shadow: 0 8px 20px rgba(255,140,164,0.3);
 }
 
-/* Landing page text */
+/* Landing page headings */
+.landing-heading {
+    color: #b30059;
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+}
+
+/* Landing page subtext */
 .landing-text {
-    color: #b30059;  /* darker pink for readability */
-    font-size: 2.2rem;
-    margin-bottom: 2rem;
+    color: #b30059;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
 }
 
 /* General page text */
 .page-text {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     line-height: 1.6;
     margin-bottom: 2rem;
     color: #b30059;
@@ -43,8 +57,8 @@ st.markdown("""
 div.stButton > button {
     border-radius: 20px !important;
     padding: 1.2rem 2.5rem !important;
-    font-size: 1.4rem !important;
-    font-weight: 600;
+    font-size: 1.5rem !important;
+    font-weight: 700;
     background-color: #ff8da4 !important;
     color: #fff !important;
     margin: 0 15px !important;
@@ -76,10 +90,10 @@ def go_to(page_name):
 # --- HOME PAGE ---
 if st.session_state.page == "home":
     st.markdown("<div class='landing-board'>", unsafe_allow_html=True)
-    st.markdown("<div class='landing-text'>Hey you ❤️</div>", unsafe_allow_html=True)
+    st.markdown("<div class='landing-heading'>Hey you ❤️</div>", unsafe_allow_html=True)
     st.markdown("<div class='landing-text'>Open this… if you dare 😏</div>", unsafe_allow_html=True)
 
-    # Horizontal buttons for all 4 options
+    # Horizontal buttons (all 4 centered)
     col1, col2, col3, col4 = st.columns([1,1,1,1])
     with col1:
         if st.button("💌 A Message"):
