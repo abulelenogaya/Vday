@@ -99,26 +99,10 @@ elif st.session_state.page=="photos":
     ]
     current_photo, caption = photos[st.session_state.photo_index]
 
-    # Centered image with fixed reasonable height
-    st.image(current_photo, caption=caption, use_column_width=False, width=300)
-
-    # Horizontal arrows
-    cols = st.columns([1,1])
-    with cols[0]:
-        if st.button("←", key="prev_arrow"):
-            st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
-    with cols[1]:
-        if st.button("→", key="next_arrow"):
-            st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
-
-    if st.button("Back"):
-        go_to("home")
-
-
-    # Centered image with slightly larger height
+    # Centered image with smaller height
     st.markdown(f'''
         <div style="text-align:center;">
-            <img src="{current_photo}" style="height:280px; object-fit:contain; display:block; margin-left:auto; margin-right:auto;" />
+            <img src="{current_photo}" style="height:180px; object-fit:contain; display:block; margin-left:auto; margin-right:auto;" />
             <p style="color:#b30059; font-weight:bold; text-align:center;">{caption}</p>
         </div>
     ''', unsafe_allow_html=True)
@@ -134,6 +118,7 @@ elif st.session_state.page=="photos":
 
     if st.button("Back"):
         go_to("home")
+
 
 # --- SONG ---
 elif st.session_state.page=="song":
