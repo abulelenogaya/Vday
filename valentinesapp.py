@@ -96,15 +96,15 @@ elif st.session_state.page=="photos":
     ]
     current_photo, caption = photos[st.session_state.photo_index]
 
-    # Centered image with fixed height
+    # Centered image with slightly larger height
     st.markdown(f'''
         <div style="text-align:center;">
-            <img src="{current_photo}" style="height:200px; object-fit:contain; display:block; margin:auto;" />
-            <p style="color:#b30059; font-weight:bold;">{caption}</p>
+            <img src="{current_photo}" style="height:280px; object-fit:contain; display:block; margin-left:auto; margin-right:auto;" />
+            <p style="color:#b30059; font-weight:bold; text-align:center;">{caption}</p>
         </div>
     ''', unsafe_allow_html=True)
 
-    # Horizontal arrows below image
+    # Horizontal arrows centered below image
     col1, col2 = st.columns([1,1])
     with col1:
         if st.button("←", key="prev_arrow"):
@@ -113,7 +113,8 @@ elif st.session_state.page=="photos":
         if st.button("→", key="next_arrow"):
             st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
 
-    if st.button("Back"): go_to("home")
+    if st.button("Back"):
+        go_to("home")
 
 # --- SONG ---
 elif st.session_state.page=="song":
