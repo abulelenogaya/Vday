@@ -130,32 +130,25 @@ if st.session_state.page == "home":
 
 # --- MESSAGE PAGE ---
 elif st.session_state.page == "message":
-       st.markdown("""
-So… I was going to play it cool.  
-
-But that’s clearly not happening 😏  
-
-I like you. And not in a subtle way.  
-In a “catching myself smiling at my phone” kind of way.  
-
-You've been on my mind a little more than I'd like to admit. (Don't let it get to your head lol..)
-
-I like our little moments. The way our conversations shift from playful to… something else.  
-The tension. The ease. The way it feels exciting but natural.  
-
-Just know… I’m very aware of the effect you have on me.  
-
-And I don’t hate it. ❤️
-
-This is still new, and I think that's my favorite part. We're still discovering each other.
-Still learning the details. Still choosing to lean in. And I just want you to know that I've been really enjoying it.
-Enjoying you.
-
-I don't know exactly where this goes yet. But I know that right now, I'm grateful it's you I'm getting to explore this with.
-
-And that feels special to me.❤️
-""")
-        '</div>', unsafe_allow_html=True
+    st.markdown(
+        """
+        <div style="text-align:center; color:#b30059; font-size:1.7rem; line-height:1.6;">
+        So… I was going to play it cool.<br><br>
+        But that’s clearly not happening 😏<br><br>
+        I like you. And not in a subtle way.<br>
+        In a “catching myself smiling at my phone” kind of way.<br><br>
+        You've been on my mind a little more than I'd like to admit. (Don't let it get to your head lol..)<br><br>
+        I like our little moments. The way our conversations shift from playful to… something else.<br>
+        The tension. The ease. The way it feels exciting but natural.<br><br>
+        Just know… I’m very aware of the effect you have on me.<br><br>
+        And I don’t hate it. ❤️<br><br>
+        This is still new, and I think that's my favorite part. We're still discovering each other.<br>
+        Still learning the details. Still choosing to lean in. And I just want you to know that I've been really enjoying it.<br>
+        Enjoying you.<br><br>
+        I don't know exactly where this goes yet. But I know that right now, I'm grateful it's you I'm getting to explore this with.<br><br>
+        And that feels special to me. ❤️
+        </div>
+        """, unsafe_allow_html=True
     )
     if st.button("Back"):
         go_to("home")
