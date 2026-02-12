@@ -6,16 +6,23 @@ st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
 # --- CSS ---
 st.markdown("""
 <style>
-/* Full-page flex to center everything */
+/* Remove Streamlit top padding */
+.css-18e3th9 {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+}
+
+/* Full-page flex to center everything vertically and horizontally */
 .stApp {
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
     font-family: 'Comic Sans MS', cursive, sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* vertical centering */
-    align-items: center;     /* horizontal centering */
+    justify-content: center; /* vertical center */
+    align-items: center;     /* horizontal center */
     height: 100vh;           /* full viewport height */
     margin: 0;
+    padding: 0;
 }
 
 /* Heading */
@@ -86,7 +93,10 @@ def go_to(page):
 
 # --- HOME PAGE ---
 if st.session_state.page == "home":
-    st.markdown('<div class="landing-heading">Hey you <span class="floating-heart">❤️</span><span class="floating-heart">💖</span></div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="landing-heading">Hey you <span class="floating-heart">❤️</span><span class="floating-heart">💖</span></div>',
+        unsafe_allow_html=True
+    )
     st.markdown('<div class="landing-subtext">Open this… if you dare 😏</div>', unsafe_allow_html=True)
 
     # Horizontal buttons
@@ -102,13 +112,20 @@ if st.session_state.page == "home":
 
 # --- MESSAGE PAGE ---
 elif st.session_state.page == "message":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">So… I was going to play it cool. But that’s clearly not happening 😏 I like you ❤️</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div style="text-align:center; color:#b30059; font-size:1.7rem;">'
+        'So… I was going to play it cool. But that’s clearly not happening 😏 I like you ❤️'
+        '</div>', unsafe_allow_html=True
+    )
     if st.button("Back"):
         go_to("home")
 
 # --- PHOTOS PAGE ---
 elif st.session_state.page == "photos":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">📸 Our Moments ❤️</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div style="text-align:center; color:#b30059; font-size:1.7rem;">📸 Our Moments ❤️</div>',
+        unsafe_allow_html=True
+    )
     col1, col2 = st.columns(2)
     col1.image("photo1.jpeg")
     col1.image("photo3.jpeg")
@@ -119,13 +136,19 @@ elif st.session_state.page == "photos":
 
 # --- SONG PAGE ---
 elif st.session_state.page == "song":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">🎵 My Song for You… reminds me of you ❤️</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div style="text-align:center; color:#b30059; font-size:1.7rem;">🎵 My Song for You… reminds me of you ❤️</div>',
+        unsafe_allow_html=True
+    )
     if st.button("Back"):
         go_to("home")
 
 # --- EXTRA PAGE ---
 elif st.session_state.page == "extra":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">✨ Don’t Press This… 😏</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div style="text-align:center; color:#b30059; font-size:1.7rem;">✨ Don’t Press This… 😏</div>',
+        unsafe_allow_html=True
+    )
     col1, col2 = st.columns(2)
     if col1.button("Do Not Press 😏"):
         col1.image("funny.jpeg")
