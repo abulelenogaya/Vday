@@ -12,9 +12,9 @@ st.markdown("""
     padding-bottom: 0rem;
 }
 
-/* Vertical centering */
+/* Adjust vertical centering: more top padding to move content down */
 .block-container {
-    padding-top: 20vh;
+    padding-top: 30vh;  /* moved further down */
     padding-bottom: 5vh;
 }
 
