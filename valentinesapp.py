@@ -1,5 +1,4 @@
 import streamlit as st
-from PIL import Image
 
 st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
 
@@ -46,14 +45,6 @@ div.stButton>button:hover {background-color:#ff5c7a !important; transform:scale(
 .fade-part:nth-child(9){animation-delay:8.5s;}
 .fade-part:nth-child(10){animation-delay:9.5s;}
 @keyframes fadeIn {0%{opacity:0;}100%{opacity:1;}}
-
-/* Carousel */
-.carousel-container {text-align:center; max-width:50vw; margin:auto;}
-.carousel-image {max-height:20vh; object-fit:contain; margin:auto;}
-
-/* Arrow buttons horizontally below image */
-.arrow-container {display:flex; justify-content:center; gap:15px; margin-top:10px;}
-.arrow-container button {font-size:2rem !important; padding:0.3rem 0.8rem !important;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -97,22 +88,30 @@ elif st.session_state.page=="message":
 elif st.session_state.page=="photos":
     st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:1rem;">📸 Our Moments ❤️</div>', unsafe_allow_html=True)
 
-    photos = [("photo1.jpeg","First cute moment"),
-              ("photo2.jpeg","Our silly faces"),
-              ("photo3.jpeg","Memories together"),
-              ("photo4.jpeg","Funny times ❤️")]
-
+    photos = [
+        ("photo1.jpeg","First cute moment"),
+        ("photo2.jpeg","Our silly faces"),
+        ("photo3.jpeg","Memories together"),
+        ("photo4.jpeg","Funny times ❤️")
+    ]
     current_photo, caption = photos[st.session_state.photo_index]
-    st.image(current_photo, use_column_width=False, width=350, caption=caption)
+
+    # Centered image with fixed height
+    st.markdown(f'''
+        <div style="text-align:center;">
+            <img src="{current_photo}" style="height:200px; object-fit:contain; display:block; margin:auto;" />
+            <p style="color:#b30059; font-weight:bold;">{caption}</p>
+        </div>
+    ''', unsafe_allow_html=True)
 
     # Horizontal arrows below image
-    st.markdown('<div class="arrow-container">', unsafe_allow_html=True)
-    prev, next = st.columns([1,1])
-    with prev:
-        if st.button("←"): st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
-    with next:
-        if st.button("→"): st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
-    st.markdown('</div>', unsafe_allow_html=True)
+    col1, col2 = st.columns([1,1])
+    with col1:
+        if st.button("←", key="prev_arrow"):
+            st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
+    with col2:
+        if st.button("→", key="next_arrow"):
+            st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
 
     if st.button("Back"): go_to("home")
 
