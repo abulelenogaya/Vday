@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Feb 12 20:36:11 2026
+Created on Thu Feb 12 21:52:21 2026
 
 @author: abulelenogaya
 """
@@ -11,73 +11,49 @@ import streamlit as st
 # --- Page Config ---
 st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="centered")
 
-# --- Custom CSS ---
-#st.markdown("""
-#<style>
-#/* Background */
-#.stApp {
-   # background-color: #FFF5F7;
-   # font-family: 'Helvetica', sans-serif;
-   # position: relative;
-   # overflow: hidden;
-#}
+# --- Soft Pink Theme & Decorative Hearts ---
+st.markdown("""
+<style>
+/* Background soft pink gradient */
+.stApp {
+    background: linear-gradient(135deg, #ffe6f0 0%, #fff0f5 100%);
+    font-family: 'Helvetica', sans-serif;
+}
 
-#/* Floating hearts */
-#@keyframes floatUp {
- #   0% {transform: translateY(0px); opacity:1;}
-  #  100% {transform: translateY(-800px); opacity:0;}
-#}
-#.heart {
-   # position: absolute;
-   # font-size: 2rem;
-   # animation: floatUp 8s linear infinite;
-   # opacity: 0;
-#}
-#.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-#.heart:nth-child(2) { left: 30%; animation-delay: 2s; }
-#.heart:nth-child(3) { left: 50%; animation-delay: 4s; }
-#.heart:nth-child(4) { left: 70%; animation-delay: 1s; }
-#.heart:nth-child(5) { left: 90%; animation-delay: 3s; }
+/* Card styling */
+.card {
+    background-color: #ffffffcc;  /* slightly transparent white */
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0px 6px 25px rgba(255, 182, 193, 0.2); /* soft pink shadow */
+    margin-bottom: 1.5rem;
+}
 
-#/* Cards */
-#.card {
-   # background-color: white;
-   # padding: 2rem;
-   # border-radius: 20px;
-   # box-shadow: 0px 4px 20px rgba(0,0,0,0.05);
-   # margin-bottom: 1.5rem;
-   # animation: fadeIn 1s ease forwards;
-#}
+/* Center alignment */
+.center { text-align: center; }
 
-#/* Fade-in animation */
-#@keyframes fadeIn {
-#    from {opacity:0; transform: translateY(20px);}
- #   to {opacity:1; transform: translateY(0);}
-#}
+/* Buttons styling */
+button {
+    border-radius: 12px !important;
+    padding: 0.8rem 1.5rem !important;
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+    background-color: #ffc0cb;  /* soft pink */
+    border: none;
+    color: #fff;
+}
+button:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    background-color: #ffb6c1;  /* slightly darker pink on hover */
+}
+</style>
 
-#/* Center */
-#.center { text-align: center; }
-
-#/* Buttons */
-#button {
-  #  border-radius: 12px !important;
- #   padding: 0.8rem 1.5rem !important;
-#    font-size: 1.1rem;
-#    transition: transform 0.2s;
-#}
-#button:hover {
-#    transform: scale(1.05);
-#    cursor: pointer;
-#}
-#</style>
-
-#<!-- Floating hearts HTML -->
-#<div class="heart">❤️</div>
-#<div class="heart">❤️</div>
-#<div class="heart">❤️</div>
-#<div class="heart">❤️</div>
-#<div class="heart">❤️</div>
-#""", unsafe_allow_html=True)
+<!-- Decorative hearts -->
+<div class='center'>
+💖 💕 💗 💖 💕 💗 💖  
+</div>
+""", unsafe_allow_html=True)
 
 # --- Session State ---
 if "page" not in st.session_state:
@@ -90,8 +66,8 @@ def go_to(page_name):
 # --- HOME PAGE ---
 if st.session_state.page == "home":
     st.markdown("<div class='card center'>", unsafe_allow_html=True)
-    st.markdown("## Happy Valentine's Day Sthandwa Sam ❤️")
-    st.markdown("I made something for you... I think you'll like it 😏")
+    st.markdown("## Hey you ❤️")
+    st.markdown("Open this… if you dare 😏")
     st.markdown("<br>", unsafe_allow_html=True)
 
     if st.button("Open 💕"):
@@ -149,9 +125,7 @@ Enjoying you.
 
 I don't know exactly where this goes yet. But I know that right now, I'm grateful it's you I'm getting to explore this with.
 
-And that feels special to me.
-
-❤️
+And that feels special to me.❤️
 """)
 
     st.markdown("</div>", unsafe_allow_html=True)
@@ -179,15 +153,10 @@ elif st.session_state.page == "photos":
 # --- SONG PAGE ---
 elif st.session_state.page == "song":
     st.markdown("## 🎵 My Song for You")
-    st.markdown("This one reminds me of you... ❤️ It says - you are my smile. you are my love.")
+    st.markdown("This one reminds me of you... ❤️ ")
+    st.markdown(""" It says - you are my smile. you are my love. 🥺💕
 
-    # Replace YOUR_TRACK_ID with your Spotify link
-    st.markdown("""
-<iframe style="border-radius:12px" 
-src="https://open.spotify.com/embed/track/https://open.spotify.com/track/69qJqxCXyZhaVjgqZEzrdq" 
-width="100%" height="152" frameBorder="0" allowfullscreen="" 
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-""", unsafe_allow_html=True)
+""")
 
     if st.button("Back"):
         go_to("menu")
@@ -196,7 +165,7 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
 elif st.session_state.page == "extra":
     st.markdown("## ✨ Don’t Press This…")
 
-    if st.button("Do Not Press 👀"):
+    if st.button("Do Not Press 😏"):
         st.image("funny.jpeg", caption="What that tongue do? 😛")
         st.markdown("Haha, you're too cute! 😍")
 
