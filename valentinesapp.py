@@ -29,7 +29,7 @@ st.markdown("""
 /* Remove white container background and adjust vertical centering */
 .block-container {
     background-color: transparent;
-    padding-top: 30vh;
+    padding-top: 25vh; /* slightly less so message fits better */
     padding-bottom: 5vh;
 }
 
@@ -48,7 +48,7 @@ st.markdown("""
     color: #b30059;
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
     text-align: center;
     animation: fadeIn 2.5s ease-in-out;
 }
@@ -99,6 +99,22 @@ div.stButton > button:hover {
     0% {opacity:0;}
     100% {opacity:1;}
 }
+
+/* Fade in sequential for paragraphs */
+.fade-part {
+    opacity: 0;
+    animation: fadeIn 1.5s forwards;
+}
+.fade-part:nth-child(1) { animation-delay: 0.5s; }
+.fade-part:nth-child(2) { animation-delay: 1.5s; }
+.fade-part:nth-child(3) { animation-delay: 2.5s; }
+.fade-part:nth-child(4) { animation-delay: 3.5s; }
+.fade-part:nth-child(5) { animation-delay: 4.5s; }
+.fade-part:nth-child(6) { animation-delay: 5.5s; }
+.fade-part:nth-child(7) { animation-delay: 6.5s; }
+.fade-part:nth-child(8) { animation-delay: 7.5s; }
+.fade-part:nth-child(9) { animation-delay: 8.5s; }
+.fade-part:nth-child(10) { animation-delay: 9.5s; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -132,21 +148,17 @@ if st.session_state.page == "home":
 elif st.session_state.page == "message":
     st.markdown(
         """
-        <div style="text-align:center; color:#b30059; font-size:1.7rem; line-height:1.6;">
-        So… I was going to play it cool.<br><br>
-        But that’s clearly not happening 😏<br><br>
-        I like you. And not in a subtle way.<br>
-        In a “catching myself smiling at my phone” kind of way.<br><br>
-        You've been on my mind a little more than I'd like to admit. (Don't let it get to your head lol..)<br><br>
-        I like our little moments. The way our conversations shift from playful to… something else.<br>
-        The tension. The ease. The way it feels exciting but natural.<br><br>
-        Just know… I’m very aware of the effect you have on me.<br><br>
-        And I don’t hate it. ❤️<br><br>
-        This is still new, and I think that's my favorite part. We're still discovering each other.<br>
-        Still learning the details. Still choosing to lean in. And I just want you to know that I've been really enjoying it.<br>
-        Enjoying you.<br><br>
-        I don't know exactly where this goes yet. But I know that right now, I'm grateful it's you I'm getting to explore this with.<br><br>
-        And that feels special to me. ❤️
+        <div style="text-align:center; color:#b30059; font-size:1.6rem; line-height:1.5;">
+            <p class="fade-part">So… I was going to play it cool.</p>
+            <p class="fade-part">But that’s clearly not happening 😏</p>
+            <p class="fade-part">I like you. And not in a subtle way.<br>In a “catching myself smiling at my phone” kind of way.</p>
+            <p class="fade-part">You've been on my mind a little more than I'd like to admit. (Don't let it get to your head lol..)</p>
+            <p class="fade-part">I like our little moments. The way our conversations shift from playful to… something else.<br>The tension. The ease. The way it feels exciting but natural.</p>
+            <p class="fade-part">Just know… I’m very aware of the effect you have on me.</p>
+            <p class="fade-part">And I don’t hate it. ❤️</p>
+            <p class="fade-part">This is still new, and I think that's my favorite part. We're still discovering each other.<br>Still learning the details. Still choosing to lean in. And I just want you to know that I've been really enjoying it.<br>Enjoying you.</p>
+            <p class="fade-part">I don't know exactly where this goes yet. But I know that right now, I'm grateful it's you I'm getting to explore this with.</p>
+            <p class="fade-part">And that feels special to me. ❤️</p>
         </div>
         """, unsafe_allow_html=True
     )
