@@ -44,7 +44,7 @@ st.markdown("""
     color: #b30059;
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 4rem;  /* increased to move buttons lower */
+    margin-bottom: 6rem;  /* increased from 4rem to move buttons further down */
     text-align: center;
     animation: fadeIn 2.5s ease-in-out;
 }
