@@ -20,13 +20,38 @@ st.markdown("""
 
 /* Full-page flex for horizontal centering */
 .stApp {
-    background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
     font-family: 'Comic Sans MS', cursive, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;  /* horizontal center */
     margin: 0;
     padding: 0;
+
+    /* Animated gradient background */
+    background: linear-gradient(270deg, #ffe6f0, #ffc0cb, #ffb6c1, #ffe6f0);
+    background-size: 800% 800%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated gradient keyframes */
+@keyframes gradientShift {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+}
+
+/* Floating hearts behind content */
+.stApp::after {
+    content: "❤️ 💖 ✨";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    font-size: 3rem;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* Heading */
@@ -44,7 +69,7 @@ st.markdown("""
     color: #b30059;
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 6rem;  /* increased from 4rem to move buttons further down */
+    margin-bottom: 6rem;  /* buttons further down */
     text-align: center;
     animation: fadeIn 2.5s ease-in-out;
 }
@@ -66,7 +91,7 @@ div.stButton > button:hover {
     cursor: pointer;
 }
 
-/* Floating hearts animation */
+/* Floating hearts animation in heading */
 @keyframes float {
     0% { transform: translateY(0px); opacity: 1; }
     50% { transform: translateY(-15px); opacity: 0.7; }
