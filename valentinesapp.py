@@ -1,4 +1,5 @@
 import streamlit as st
+from PIL import Image
 
 # --- Page Config ---
 st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
@@ -29,7 +30,7 @@ st.markdown("""
 /* Remove white container background and adjust vertical centering */
 .block-container {
     background-color: transparent;
-    padding-top: 25vh; /* slightly less so message fits better */
+    padding-top: 25vh;
     padding-bottom: 5vh;
 }
 
@@ -115,12 +116,20 @@ div.stButton > button:hover {
 .fade-part:nth-child(8) { animation-delay: 7.5s; }
 .fade-part:nth-child(9) { animation-delay: 8.5s; }
 .fade-part:nth-child(10) { animation-delay: 9.5s; }
+
+/* Fade effect for carousel images */
+.carousel-image {
+    transition: opacity 1s ease-in-out;
+    max-width: 100%;
+}
 </style>
 """, unsafe_allow_html=True)
 
 # --- Session State ---
 if "page" not in st.session_state:
     st.session_state.page = "home"
+if "photo_index" not in st.session_state:
+    st.session_state.photo_index = 0
 
 def go_to(page):
     st.session_state.page = page
@@ -165,19 +174,24 @@ elif st.session_state.page == "message":
     if st.button("Back"):
         go_to("home")
 
-# --- PHOTOS PAGE ---
+# --- PHOTOS PAGE (Carousel) ---
 elif st.session_state.page == "photos":
     st.markdown(
-        '<div style="text-align:center; color:#b30059; font-size:1.7rem;">📸 Our Moments ❤️</div>',
+        '<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:1rem;">📸 Our Moments ❤️</div>',
         unsafe_allow_html=True
     )
-    col1, col2 = st.columns(2)
-    col1.image("photo1.jpeg")
-    col1.image("photo3.jpeg")
-    col2.image("photo2.jpeg")
-    col2.image("photo4.jpeg")
-    if st.button("Back"):
+
+    photos = ["photo1.jpeg", "photo2.jpeg", "photo3.jpeg", "photo4.jpeg"]
+    current_photo = photos[st.session_state.photo_index]
+    st.image(current_photo, use_column_width=True, output_format="auto", caption="")
+
+    col1, col2, col3 = st.columns([1,1,1])
+    if col1.button("Previous"):
+        st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
+    if col2.button("Back"):
         go_to("home")
+    if col3.button("Next"):
+        st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
 
 # --- SONG PAGE ---
 elif st.session_state.page == "song":
