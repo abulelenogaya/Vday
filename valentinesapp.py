@@ -120,7 +120,7 @@ div.stButton > button:hover {
 /* Carousel image fade and size */
 .carousel-image {
     transition: opacity 1s ease-in-out;
-    max-height: 70vh; /* fit screen height */
+    max-height: 50vh; /* shrink to fit screen */
     object-fit: contain;
     margin: auto;
 }
@@ -176,7 +176,7 @@ elif st.session_state.page == "message":
     if st.button("Back"):
         go_to("home")
 
-# --- PHOTOS PAGE (Carousel) ---
+# --- PHOTOS PAGE (Carousel with arrows) ---
 elif st.session_state.page == "photos":
     st.markdown(
         '<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:1rem;">📸 Our Moments ❤️</div>',
@@ -194,12 +194,13 @@ elif st.session_state.page == "photos":
 
     st.image(current_photo, use_column_width=True, caption=caption, output_format="auto")
 
+    # Arrows for navigation
     col1, col2, col3 = st.columns([1,1,1])
-    if col1.button("Previous"):
+    if col1.button("←"):
         st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
     if col2.button("Back"):
         go_to("home")
-    if col3.button("Next"):
+    if col3.button("→"):
         st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
 
 # --- SONG PAGE ---
