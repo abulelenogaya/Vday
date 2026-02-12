@@ -12,9 +12,9 @@ st.markdown("""
     padding-bottom: 0rem;
 }
 
-/* Add top padding to simulate vertical centering */
+/* Content vertical centering */
 .block-container {
-    padding-top: 25vh; /* visually center content */
+    padding-top: 20vh;
     padding-bottom: 5vh;
 }
 
@@ -23,25 +23,24 @@ st.markdown("""
     font-family: 'Comic Sans MS', cursive, sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;  /* horizontal center */
+    align-items: center;
     margin: 0;
     padding: 0;
 
     /* Gradient background */
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
 
-    /* Overlay repeating heart pattern */
-    background-image: url('https://i.ibb.co/9ytW7Fv/pattern.png'); /* tiny hearts */
+    /* Static repeating heart pattern */
+    background-image: url('https://i.ibb.co/9ytW7Fv/pattern.png'); /* subtle hearts */
     background-repeat: repeat;
     background-size: 50px 50px;
 
     position: relative;
-    overflow: hidden;
 }
 
 /* Heading */
 .landing-heading {
-    color: #b30059; /* dark pink */
+    color: #b30059;
     font-size: 3rem;
     font-weight: 900;
     margin-bottom: 1rem;
@@ -54,7 +53,7 @@ st.markdown("""
     color: #b30059;
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 6rem;  /* buttons further down */
+    margin-bottom: 6rem;  /* buttons lower */
     text-align: center;
     animation: fadeIn 2.5s ease-in-out;
 }
@@ -70,13 +69,23 @@ div.stButton > button {
     margin: 0 10px !important;
     transition: transform 0.3s, background-color 0.3s;
 }
+
+/* Hover effect + subtle pulse */
 div.stButton > button:hover {
     background-color: #ff5c7a !important;
     transform: scale(1.1);
     cursor: pointer;
+    animation: pulse 1s infinite;
 }
 
-/* Floating hearts animation in heading */
+/* Pulse animation */
+@keyframes pulse {
+    0% { transform: scale(1.1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1.1); }
+}
+
+/* Floating hearts in heading */
 @keyframes float {
     0% { transform: translateY(0px); opacity: 1; }
     50% { transform: translateY(-15px); opacity: 0.7; }
