@@ -86,7 +86,10 @@ elif st.session_state.page=="message":
 
 # --- PHOTOS ---
 elif st.session_state.page=="photos":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:1rem;">📸 Our Moments ❤️</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:1rem;">📸 Our Moments ❤️</div>',
+        unsafe_allow_html=True
+    )
 
     photos = [
         ("photo1.jpeg","First cute moment"),
@@ -95,6 +98,22 @@ elif st.session_state.page=="photos":
         ("photo4.jpeg","Funny times ❤️")
     ]
     current_photo, caption = photos[st.session_state.photo_index]
+
+    # Centered image with fixed reasonable height
+    st.image(current_photo, caption=caption, use_column_width=False, width=300)
+
+    # Horizontal arrows
+    cols = st.columns([1,1])
+    with cols[0]:
+        if st.button("←", key="prev_arrow"):
+            st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
+    with cols[1]:
+        if st.button("→", key="next_arrow"):
+            st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
+
+    if st.button("Back"):
+        go_to("home")
+
 
     # Centered image with slightly larger height
     st.markdown(f'''
