@@ -130,9 +130,8 @@ if st.session_state.page == "home":
 
 # --- MESSAGE PAGE ---
 elif st.session_state.page == "message":
-    st.markdown(
-        '<div style="text-align:center; color:#b30059; font-size:1.7rem;">'
-        'So… I was going to play it cool.  
+       st.markdown("""
+So… I was going to play it cool.  
 
 But that’s clearly not happening 😏  
 
@@ -154,7 +153,8 @@ Enjoying you.
 
 I don't know exactly where this goes yet. But I know that right now, I'm grateful it's you I'm getting to explore this with.
 
-And that feels special to me.❤️'
+And that feels special to me.❤️
+""")
         '</div>', unsafe_allow_html=True
     )
     if st.button("Back"):
