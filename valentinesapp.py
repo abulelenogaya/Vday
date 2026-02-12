@@ -10,31 +10,27 @@ st.markdown("""
 .stApp {
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 /* Pink board enclosing landing content */
 .landing-board {
     border: 5px solid #ff8da4;
     border-radius: 25px;
-    padding: 4rem 3rem;
-    max-width: 900px;
+    padding: 3rem 2rem;
+    max-width: 700px;
     width: 90%;
     background: linear-gradient(135deg, #fff0f5 0%, #ffe6f0 100%);
     text-align: center;
     box-shadow: 0 8px 20px rgba(255,140,164,0.3);
+    margin: 80px auto; /* centers horizontally, adds vertical space */
 }
 
 /* Heading */
 .landing-heading {
     color: #b30059;
-    font-size: 3rem;
+    font-size: 2.8rem;
     font-weight: 900;
     margin-bottom: 1.5rem;
-    text-align: center;
 }
 
 /* Subtext */
@@ -42,8 +38,7 @@ st.markdown("""
     color: #b30059;
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 3rem;
-    text-align: center;
+    margin-bottom: 2.5rem;
 }
 
 /* General page text */
@@ -59,11 +54,11 @@ st.markdown("""
 div.stButton > button {
     border-radius: 20px !important;
     padding: 1.2rem 2.5rem !important;
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
     font-weight: 700;
     background-color: #ff8da4 !important;
     color: #fff !important;
-    margin: 0 15px !important;
+    margin: 0 10px !important;
     transition: transform 0.2s, background-color 0.2s;
 }
 div.stButton > button:hover {
