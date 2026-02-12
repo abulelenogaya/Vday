@@ -6,21 +6,25 @@ st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
 # --- CSS ---
 st.markdown("""
 <style>
-/* Remove Streamlit top padding */
+/* Remove Streamlit default top padding */
 .css-18e3th9 {
     padding-top: 0rem;
     padding-bottom: 0rem;
 }
 
-/* Full-page flex to center everything vertically and horizontally */
+/* Add top padding to simulate vertical centering */
+.block-container {
+    padding-top: 25vh; /* adjust to visually center content */
+    padding-bottom: 5vh;
+}
+
+/* Full-page flex for horizontal centering */
 .stApp {
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 100%);
     font-family: 'Comic Sans MS', cursive, sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* vertical center */
-    align-items: center;     /* horizontal center */
-    height: 100vh;           /* full viewport height */
+    align-items: center;  /* horizontal center */
     margin: 0;
     padding: 0;
 }
