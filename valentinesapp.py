@@ -117,10 +117,12 @@ div.stButton > button:hover {
 .fade-part:nth-child(9) { animation-delay: 8.5s; }
 .fade-part:nth-child(10) { animation-delay: 9.5s; }
 
-/* Fade effect for carousel images */
+/* Carousel image fade and size */
 .carousel-image {
     transition: opacity 1s ease-in-out;
-    max-width: 100%;
+    max-height: 70vh; /* fit screen height */
+    object-fit: contain;
+    margin: auto;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -181,9 +183,16 @@ elif st.session_state.page == "photos":
         unsafe_allow_html=True
     )
 
-    photos = ["photo1.jpeg", "photo2.jpeg", "photo3.jpeg", "photo4.jpeg"]
-    current_photo = photos[st.session_state.photo_index]
-    st.image(current_photo, use_column_width=True, output_format="auto", caption="")
+    # List of photos and captions
+    photos = [
+        ("photo1.jpeg", "First cute moment"),
+        ("photo2.jpeg", "Our silly faces"),
+        ("photo3.jpeg", "Memories together"),
+        ("photo4.jpeg", "Funny times ❤️")
+    ]
+    current_photo, caption = photos[st.session_state.photo_index]
+
+    st.image(current_photo, use_column_width=True, caption=caption, output_format="auto")
 
     col1, col2, col3 = st.columns([1,1,1])
     if col1.button("Previous"):
