@@ -164,10 +164,10 @@ def go_to(page):
 # --- HOME ---
 if st.session_state.page == "home":
     st.markdown(
-        '<div class="landing-heading">Hey you <span class="floating-heart">&#10084;</span><span class="floating-heart">&#128150;</span></div>',
+        '<div class="landing-heading">Happy Valentine\'s Day My Love <span class="floating-heart">&#10084;</span></div>',
         unsafe_allow_html=True
     )
-    st.markdown('<div class="landing-subtext">Open this... if you dare</div>', unsafe_allow_html=True)
+    st.markdown('<div class="landing-subtext">I made something for you... I think you\'ll like it🥺</div>', unsafe_allow_html=True)
 
     # Horizontal buttons
     col1, col2, col3, col4 = st.columns([1,1,1,1], gap="medium")
