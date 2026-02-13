@@ -1,6 +1,24 @@
 import streamlit as st
 
 st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
+st.markdown("""
+<style>
+
+/* Change dark markdown/navy container to soft pink */
+div[data-testid="stMarkdownContainer"] {
+    background-color: #ffe6f2 !important;
+    border-radius: 20px;
+    padding: 35px !important;
+}
+
+/* Ensure no extra dark layers */
+div[data-testid="stMarkdownContainer"] > div {
+    background: transparent !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
 
 # --- CSS ---
 st.markdown("""
