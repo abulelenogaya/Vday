@@ -26,17 +26,17 @@ st.markdown("""
 }
 .heart {
     position: absolute;
-    font-size: 2rem;
-    opacity: 0.6;
+    font-size: 3rem;
+    opacity: 0.4;
     animation: float-up 15s infinite ease-in;
 }
 @keyframes float-up {
     0% {
         transform: translateY(100vh) translateX(0px) rotate(0deg);
-        opacity: 0.6;
+        opacity: 0.4;
     }
     50% {
-        opacity: 0.8;
+        opacity: 0.5;
     }
     100% {
         transform: translateY(-20vh) translateX(80px) rotate(360deg);
@@ -101,16 +101,16 @@ div.stButton>button:hover {background-color:#ff5c7a !important; transform:scale(
 # Add floating hearts to all pages - more hearts!
 st.markdown("""
 <div class="hearts-container">
-    <div class="heart">❤️</div>
     <div class="heart">💖</div>
     <div class="heart">💕</div>
     <div class="heart">💗</div>
     <div class="heart">💓</div>
-    <div class="heart">❤️</div>
     <div class="heart">💖</div>
     <div class="heart">💕</div>
     <div class="heart">💗</div>
     <div class="heart">💓</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -187,12 +187,14 @@ elif st.session_state.page=="photos":
     ]
     current_photo, caption = photos[st.session_state.photo_index]
 
-    # Create centered container for image, caption and buttons
-    col_left, col_center, col_right = st.columns([1,2,1])
+    # Use container to center everything together
+    st.markdown('<div style="display: flex; justify-content: center;">', unsafe_allow_html=True)
     
-    with col_center:
-        # Display image with smaller max height
-        st.image(current_photo, width=400)
+    # Single centered column
+    col1, col2, col3 = st.columns([1.5,1,1.5])
+    
+    with col2:
+        st.image(current_photo, use_container_width=True)
         
         # Caption
         st.markdown(f'<p style="color:#b30059; font-weight:bold; text-align:center; font-size:1.2rem; margin-top:0.5rem; margin-bottom:1rem;">{caption}</p>', unsafe_allow_html=True)
@@ -207,7 +209,8 @@ elif st.session_state.page=="photos":
             if st.button("Next ➡️", key="next_arrow", use_container_width=True):
                 st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
                 st.rerun()
-
+    
+    st.markdown('</div>', unsafe_allow_html=True)
     st.markdown("<br><br>", unsafe_allow_html=True)
     
     # Back button centered
