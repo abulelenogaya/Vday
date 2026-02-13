@@ -76,32 +76,39 @@ if st.session_state.page == "home":
 
 # --- MESSAGE ---
 elif st.session_state.page=="message":
+
     st.markdown("""
-       <div style="
+        <div style="
             background-color: white;
-            padding: 30px;
+            padding: 35px;
             border-radius: 20px;
             max-width: 700px;
-            margin: 0 auto;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            text-align: justify;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #b30059;
+            margin: 40px auto;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
         ">
-            My love,<br><br>
+            <div style="
+                text-align: justify;
+                font-size: 1.05rem;
+                line-height: 1.8;
+                color: #ff4da6;
+            ">
+                My love,<br><br>
 
-            From the very beginning, you have brought so much light into my life.
-            Every moment with you feels special, whether we're laughing over something silly
-            or just sitting quietly together.<br><br>
+                From the very beginning, you have brought so much light into my life.
+                Every moment with you feels special, whether we're laughing over something silly
+                or just sitting quietly together.<br><br>
 
-            You make ordinary days feel extraordinary. I am endlessly grateful for
-            your kindness, your warmth, and the way you care so deeply.<br><br>
+                You make ordinary days feel extraordinary. I am endlessly grateful for
+                your kindness, your warmth, and the way you care so deeply.<br><br>
 
-            Thank you for being you. ❤️
+                Thank you for being you. ❤️
+            </div>
         </div>
     """, unsafe_allow_html=True)
-    if st.button("Back"): go_to("home")
+
+    if st.button("Back"):
+        go_to("home")
+
 
 # --- PHOTOS ---
 elif st.session_state.page=="photos":
