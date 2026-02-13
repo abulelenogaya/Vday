@@ -242,7 +242,7 @@ elif st.session_state.page=="photos":
         # Navigation buttons - centered and close together
         btn_col1, btn_col2 = st.columns([1, 1], gap="small")
         with btn_col1:
-            if st.button("⬅️ Previous", key="prev_arrow", use_container_width=True):
+            if st.button("⬅️ Prev", key="prev_arrow", use_container_width=True):
                 st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
                 st.rerun()
         with btn_col2:
@@ -263,9 +263,32 @@ elif st.session_state.page=="photos":
 
 # --- SONG ---
 elif st.session_state.page=="song":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-top:5rem;">🎵 My Song for You... reminds me of you ❤️</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:2.5rem; font-weight:900; margin-top:5rem; margin-bottom:2rem;">🎵 My Song for You... reminds me of you ❤️</div>', unsafe_allow_html=True)
+    
+    # Spotify embed centered
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        # Spotify embed for "Wena" by Internet Athi
+        st.markdown("""
+        <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/track/4A0OfDzEXUQGNI5jWImAuC?utm_source=generator" 
+                width="100%" 
+                height="352" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+        </iframe>
+        """, unsafe_allow_html=True)
+    
     st.markdown("<br><br>", unsafe_allow_html=True)
-    if st.button("🏠 Back"): go_to("home")
+    
+    # Back button centered
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col2:
+        if st.button("🏠 Back", use_container_width=True): 
+            go_to("home")
+            st.rerun()
 
 # --- EXTRA ---
 elif st.session_state.page=="extra":
