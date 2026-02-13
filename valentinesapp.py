@@ -7,31 +7,39 @@ st.markdown("""
 <style>
 /* Remove top padding */
 .css-18e3th9 {padding-top:0rem; padding-bottom:0rem;}
+
+/* Main app background */
 .stApp {
     font-family: 'Comic Sans MS', cursive, sans-serif; 
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 30%, #ffb6c1 60%, #ff8da4 100%);
-    position: relative;
-    overflow: hidden;
 }
 
-/* Floating hearts animation */
-.heart {
+/* Floating hearts animation - using absolute positioning within viewport */
+.hearts-container {
     position: fixed;
-    font-size: 2rem;
-    opacity: 0.6;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+.heart {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.5;
     animation: float-up 15s infinite ease-in;
-    z-index: 1;
 }
 @keyframes float-up {
     0% {
         transform: translateY(100vh) translateX(0px) rotate(0deg);
-        opacity: 0.6;
+        opacity: 0.5;
     }
     50% {
-        opacity: 0.8;
+        opacity: 0.7;
     }
     100% {
-        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        transform: translateY(-20vh) translateX(50px) rotate(360deg);
         opacity: 0;
     }
 }
@@ -42,8 +50,8 @@ st.markdown("""
 .heart:nth-child(5) { left: 90%; animation-delay: 12s; }
 
 /* Heading and subtext */
-.landing-heading {color:#b30059; font-size:3rem; font-weight:900; text-align:center; margin-bottom:1rem; margin-top:8rem;}
-.landing-subtext {color:#b30059; font-size:2rem; font-weight:700; text-align:center; margin-bottom:4rem;}
+.landing-heading {color:#b30059; font-size:3rem; font-weight:900; text-align:center; margin-bottom:1rem; margin-top:8rem; position:relative; z-index:10;}
+.landing-subtext {color:#b30059; font-size:2rem; font-weight:700; text-align:center; margin-bottom:4rem; position:relative; z-index:10;}
 .floating-heart {color:#ff5c7a; font-size:2rem; display:inline-block; animation: float 3s infinite ease-in-out; margin:0 5px;}
 @keyframes float {0%{transform:translateY(0px);}50%{transform:translateY(-10px);}100%{transform:translateY(0px);}}
 
@@ -57,9 +65,17 @@ div.stButton>button {
     color:#fff !important;
     margin:0 10px !important;
     transition: transform 0.3s, background-color 0.3s;
+    position:relative;
+    z-index:10;
 }
 div.stButton>button:hover {background-color:#ff5c7a !important; transform:scale(1.1); animation:pulse 1s infinite; cursor:pointer;}
 @keyframes pulse {0%{transform:scale(1.1);}50%{transform:scale(1.15);}100%{transform:scale(1.1);}}
+
+/* Ensure content is above floating hearts */
+.element-container {
+    position: relative;
+    z-index: 10;
+}
 
 /* Message fade-in */
 .fade-part {opacity:0; animation: fadeIn 1.5s forwards;}
@@ -79,11 +95,13 @@ div.stButton>button:hover {background-color:#ff5c7a !important; transform:scale(
 
 # Add floating hearts to all pages
 st.markdown("""
-<div class="heart">❤️</div>
-<div class="heart">💖</div>
-<div class="heart">💕</div>
-<div class="heart">💗</div>
-<div class="heart">💓</div>
+<div class="hearts-container">
+    <div class="heart">❤️</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
+</div>
 """, unsafe_allow_html=True)
 
 # --- Session State ---
