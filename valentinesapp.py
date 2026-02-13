@@ -1,6 +1,20 @@
 import streamlit as st
 
 st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
+st.markdown("""
+<style>
+/* Remove default dark background from markdown blocks */
+.stMarkdown, 
+.stMarkdown div {
+    background: transparent !important;
+}
+
+/* Remove dark background from any nested elements */
+div[data-testid="stMarkdownContainer"] {
+    background-color: transparent !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # --- CSS ---
 st.markdown("""
