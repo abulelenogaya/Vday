@@ -73,6 +73,7 @@ if st.session_state.page == "home":
         go_to("photos")
     if col4.button("✨ Something Extra"):
         go_to("extra")
+#MESSAGE
 
 elif st.session_state.page == "message":
 
@@ -103,6 +104,7 @@ Thank you for being you. ❤️
 
     if st.button("Back"):
         go_to("home")
+
 
 
 
