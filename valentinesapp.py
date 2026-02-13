@@ -187,35 +187,36 @@ elif st.session_state.page == "message":
 <div style="
     max-width: 700px;
     margin: 80px auto 40px auto;
-    padding: 35px;
+    padding: 40px;
     border-radius: 20px;
     background-color: white;
     text-align: justify;
     font-size: 1.05rem;
-    line-height: 1.8;
+    line-height: 1.6;
     color: #ff4da6;
+    box-shadow: 0 8px 32px rgba(255, 105, 180, 0.3);
 ">
 So... I was going to play it cool.<br>
-But that's clearly not happening 😏<br><br>
-
+But that's clearly not happening 😏<br>
+<br>
 I like you. And not in a subtle way.<br>
-In a "catching myself smiling at my phone" kind of way.<br><br>
-
-You've been on my mind a little more than I'd like to admit. (Don't let it get to your head lol..)<br><br>
-
+In a "catching myself smiling at my phone" kind of way.<br>
+<br>
+You've been on my mind a little more than I'd like to admit. (Don't let it get to your head lol..)<br>
+<br>
 I like our little moments. The way our conversations shift from playful to... something else.<br>
-The tension. The ease. The way it feels exciting but natural.<br><br>
-
+The tension. The ease. The way it feels exciting but natural.<br>
+<br>
 Just know... I'm very aware of the effect you have on me.<br>
-And I don't hate it. &#10084;<br><br>
-
+And I don't hate it. &#10084;<br>
+<br>
 This is still new, and I think that's my favorite part. We're still discovering each other.<br>
 Still learning the details. Still choosing to lean in. And I just want you to know that I've been really enjoying it.<br>
-Enjoying you.<br><br>
-
+Enjoying you.<br>
+<br>
 I don't know exactly where this goes yet. But I know that right now, I'm grateful it's you I'm getting to explore this with.<br>
-And that feels special to me.<br><br>
-
+And that feels special to me.<br>
+<br>
 &#10084;
 </div>
 """, unsafe_allow_html=True)
