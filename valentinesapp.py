@@ -56,15 +56,23 @@ def go_to(page):
     st.session_state.page = page
 
 # --- HOME ---
-if st.session_state.page=="home":
-    st.markdown('<div class="landing-heading">Hey you <span class="floating-heart">❤️</span><span class="floating-heart">💖</span></div>', unsafe_allow_html=True)
+if st.session_state.page == "home":
+    st.markdown(
+        '<div class="landing-heading">Hey you <span class="floating-heart">❤️</span><span class="floating-heart">💖</span></div>',
+        unsafe_allow_html=True
+    )
     st.markdown('<div class="landing-subtext">Open this… if you dare 😏</div>', unsafe_allow_html=True)
 
-    col1,col2,col3,col4 = st.columns([1,1,1,1], gap="medium")
-    if col1.button("💌 A Message"): go_to("message")
-    if col2.button("🎵 My Song for You"): go_to("song")
-    if col3.button("📸 Our Moments"): go_to("photos")
-    if col4.button("✨ Something Extra"): go_to("extra")
+    # Horizontal buttons
+    col1, col2, col3, col4 = st.columns([1,1,1,1], gap="medium")
+    if col1.button("💌 A Message"):
+        go_to("message")
+    if col2.button("🎵 My Song for You"):
+        go_to("song")
+    if col3.button("📸 Our Moments"):
+        go_to("photos")
+    if col4.button("✨ Something Extra"):
+        go_to("extra")
 
 # --- MESSAGE ---
 elif st.session_state.page=="message":
