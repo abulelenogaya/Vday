@@ -269,17 +269,11 @@ elif st.session_state.page=="song":
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         # Spotify embed for "Wena" by Internet Athi
-        st.markdown("""
-        <iframe style="border-radius:12px" 
-                src="https://open.spotify.com/embed/track/4A0OfDzEXUQGNI5jWImAuC?utm_source=generator" 
-                width="100%" 
-                height="352" 
-                frameBorder="0" 
-                allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy">
-        </iframe>
-        """, unsafe_allow_html=True)
+        st.components.v1.iframe(
+            "https://open.spotify.com/embed/track/69qJqxCXyZhaVjgqZEzrdq?utm_source=generator",
+            height=352,
+            scrolling=False
+        )
     
     st.markdown("<br><br>", unsafe_allow_html=True)
     
