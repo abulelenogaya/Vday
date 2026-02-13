@@ -13,7 +13,7 @@ st.markdown("""
 }
 
 /* Heading and subtext */
-.landing-heading {color:#b30059; font-size:3rem; font-weight:900; text-align:center; margin-bottom:1rem;}
+.landing-heading {color:#b30059; font-size:3rem; font-weight:900; text-align:center; margin-bottom:1rem; margin-top:8rem;}
 .landing-subtext {color:#b30059; font-size:2rem; font-weight:700; text-align:center; margin-bottom:4rem;}
 .floating-heart {color:#ff5c7a; font-size:2rem; display:inline-block; animation: float 3s infinite ease-in-out; margin:0 5px;}
 @keyframes float {0%{transform:translateY(0px);}50%{transform:translateY(-10px);}100%{transform:translateY(0px);}}
@@ -73,8 +73,8 @@ if st.session_state.page == "home":
         go_to("photos")
     if col4.button("✨ Something Extra"):
         go_to("extra")
-#MESSAGE
 
+# --- MESSAGE ---
 elif st.session_state.page == "message":
 
     st.markdown("""
@@ -104,11 +104,6 @@ Thank you for being you. ❤️
 
     if st.button("Back"):
         go_to("home")
-
-
-
-
-
 
 
 # --- PHOTOS ---
@@ -154,7 +149,7 @@ elif st.session_state.page=="song":
 
 # --- EXTRA ---
 elif st.session_state.page=="extra":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">✨ Don’t Press This… 😏</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">✨ Don't Press This… 😏</div>', unsafe_allow_html=True)
     col1,col2 = st.columns(2)
     if col1.button("Do Not Press 😏"): col1.image("funny.jpeg")
     if st.button("Back"): go_to("home")
