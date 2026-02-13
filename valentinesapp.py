@@ -167,7 +167,7 @@ if st.session_state.page == "home":
         '<div class="landing-heading">Happy Valentine\'s Day My Love <span class="floating-heart">&#10084;</span></div>',
         unsafe_allow_html=True
     )
-    st.markdown('<div class="landing-subtext">I made something for you... I think you\'ll like it🥺</div>', unsafe_allow_html=True)
+    st.markdown('<div class="landing-subtext">I made something for you... I hope you\'ll like it🥺</div>', unsafe_allow_html=True)
 
     # Horizontal buttons
     col1, col2, col3, col4 = st.columns([1,1,1,1], gap="medium")
