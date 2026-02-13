@@ -61,7 +61,7 @@ if st.session_state.page == "home":
         '<div class="landing-heading">Hey you <span class="floating-heart">❤️</span><span class="floating-heart">💖</span></div>',
         unsafe_allow_html=True
     )
-    st.markdown('<div class="landing-subtext">Open this… if you dare 😏</div>', unsafe_allow_html=True)
+    st.markdown('<div class="landing-subtext">Open this... if you dare 😏</div>', unsafe_allow_html=True)
 
     # Horizontal buttons
     col1, col2, col3, col4 = st.columns([1,1,1,1], gap="medium")
@@ -144,12 +144,12 @@ elif st.session_state.page=="photos":
 
 # --- SONG ---
 elif st.session_state.page=="song":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">🎵 My Song for You… reminds me of you ❤️</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">🎵 My Song for You... reminds me of you ❤️</div>', unsafe_allow_html=True)
     if st.button("Back"): go_to("home")
 
 # --- EXTRA ---
 elif st.session_state.page=="extra":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">✨ Don't Press This… 😏</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">✨ Don't Press This... 😏</div>', unsafe_allow_html=True)
     col1,col2 = st.columns(2)
     if col1.button("Do Not Press 😏"): col1.image("funny.jpeg")
     if st.button("Back"): go_to("home")
