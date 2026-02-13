@@ -195,16 +195,28 @@ elif st.session_state.page == "message":
     line-height: 1.8;
     color: #ff4da6;
 ">
-<strong>My love,</strong><br><br>
+So... I was going to play it cool.<br>
+But that's clearly not happening 😏<br><br>
 
-From the very beginning, you have brought so much light into my life.
-Every moment with you feels special, whether we're laughing over something silly
-or just sitting quietly together.<br><br>
+I like you. And not in a subtle way.<br>
+In a "catching myself smiling at my phone" kind of way.<br><br>
 
-You make ordinary days feel extraordinary. I am endlessly grateful for
-your kindness, your warmth, and the way you care so deeply.<br><br>
+You've been on my mind a little more than I'd like to admit. (Don't let it get to your head lol..)<br><br>
 
-Thank you for being you. &#10084;
+I like our little moments. The way our conversations shift from playful to... something else.<br>
+The tension. The ease. The way it feels exciting but natural.<br><br>
+
+Just know... I'm very aware of the effect you have on me.<br>
+And I don't hate it. &#10084;<br><br>
+
+This is still new, and I think that's my favorite part. We're still discovering each other.<br>
+Still learning the details. Still choosing to lean in. And I just want you to know that I've been really enjoying it.<br>
+Enjoying you.<br><br>
+
+I don't know exactly where this goes yet. But I know that right now, I'm grateful it's you I'm getting to explore this with.<br>
+And that feels special to me.<br><br>
+
+&#10084;
 </div>
 """, unsafe_allow_html=True)
 
