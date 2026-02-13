@@ -65,13 +65,13 @@ if st.session_state.page == "home":
 
     # Horizontal buttons
     col1, col2, col3, col4 = st.columns([1,1,1,1], gap="medium")
-    if col1.button("A Message"):
+    if col1.button("💌 A Message"):
         go_to("message")
-    if col2.button("My Song for You"):
+    if col2.button("🎵 My Song for You"):
         go_to("song")
-    if col3.button("Our Moments"):
+    if col3.button("📸 Our Moments"):
         go_to("photos")
-    if col4.button("Something Extra"):
+    if col4.button("✨ Something Extra"):
         go_to("extra")
 
 # --- MESSAGE ---
@@ -80,7 +80,7 @@ elif st.session_state.page == "message":
     st.markdown("""
 <div style="
     max-width: 700px;
-    margin: 40px auto;
+    margin: 80px auto 40px auto;
     padding: 35px;
     border-radius: 20px;
     background-color: white;
@@ -102,14 +102,14 @@ Thank you for being you. &#10084;
 </div>
 """, unsafe_allow_html=True)
 
-    if st.button("Back"):
+    if st.button("🏠 Back"):
         go_to("home")
 
 
 # --- PHOTOS ---
 elif st.session_state.page=="photos":
     st.markdown(
-        '<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:1rem;">Our Moments</div>',
+        '<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:2rem; margin-top:3rem;">📸 Our Moments ❤️</div>',
         unsafe_allow_html=True
     )
 
@@ -117,40 +117,60 @@ elif st.session_state.page=="photos":
         ("photo1.jpeg","First cute moment"),
         ("photo2.jpeg","Our silly faces"),
         ("photo3.jpeg","Memories together"),
-        ("photo4.jpeg","Funny times")
+        ("photo4.jpeg","Funny times ❤️")
     ]
     current_photo, caption = photos[st.session_state.photo_index]
 
-    # Centered image with smaller height
-    st.markdown(f'''
-        <div style="text-align:center;">
-            <img src="{current_photo}" style="height:180px; object-fit:contain; display:block; margin-left:auto; margin-right:auto;" />
-            <p style="color:#b30059; font-weight:bold; text-align:center;">{caption}</p>
-        </div>
-    ''', unsafe_allow_html=True)
+    # Centered image using streamlit
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        st.image(current_photo, caption=caption, use_container_width=True)
 
     # Horizontal arrows centered below image
     col1, col2 = st.columns([1,1])
     with col1:
-        if st.button("Previous", key="prev_arrow"):
+        if st.button("⬅️ Previous", key="prev_arrow"):
             st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
     with col2:
-        if st.button("Next", key="next_arrow"):
+        if st.button("Next ➡️", key="next_arrow"):
             st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
 
-    if st.button("Back"):
+    st.markdown("<br>", unsafe_allow_html=True)
+    if st.button("🏠 Back"):
         go_to("home")
 
 
 # --- SONG ---
 elif st.session_state.page=="song":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">My Song for You... reminds me of you</div>', unsafe_allow_html=True)
-    if st.button("Back"): go_to("home")
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-top:5rem;">🎵 My Song for You... reminds me of you ❤️</div>', unsafe_allow_html=True)
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    if st.button("🏠 Back"): go_to("home")
 
 # --- EXTRA ---
 elif st.session_state.page=="extra":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">Something Extra... Don\'t Press This</div>', unsafe_allow_html=True)
-    col1,col2 = st.columns(2)
-    if col1.button("Do Not Press"):
-        col1.image("funny.jpeg")
-    if st.button("Back"): go_to("home")
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-top:5rem; margin-bottom:3rem;">✨ Something Extra... Don\'t Press This 😏</div>', unsafe_allow_html=True)
+    
+    # Add some mystery text
+    st.markdown('<div style="text-align:center; color:#ff5c7a; font-size:1.2rem; margin-bottom:3rem;">I warned you... but you never listen 😄</div>', unsafe_allow_html=True)
+    
+    # Center the button
+    col1, col2, col3 = st.columns([1,1,1])
+    with col2:
+        if st.button("🚫 Do Not Press 🚫", key="danger_button"):
+            st.session_state.show_extra = True
+    
+    # Show image centered if button was pressed
+    if "show_extra" in st.session_state and st.session_state.show_extra:
+        st.markdown("<br><br>", unsafe_allow_html=True)
+        col1, col2, col3 = st.columns([1,2,1])
+        with col2:
+            st.image("funny.jpeg", use_container_width=True)
+            st.markdown('<div style="text-align:center; color:#b30059; font-size:1.3rem; margin-top:1rem;">😂 I told you not to press it! 😂</div>', unsafe_allow_html=True)
+    
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1,1,1])
+    with col2:
+        if st.button("🏠 Back to Home"):
+            if "show_extra" in st.session_state:
+                del st.session_state.show_extra
+            go_to("home")
