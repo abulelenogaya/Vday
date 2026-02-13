@@ -53,6 +53,26 @@ st.markdown("""
 .heart:nth-child(8) { left: 75%; animation-delay: 1s; }
 .heart:nth-child(9) { left: 85%; animation-delay: 3s; }
 .heart:nth-child(10) { left: 95%; animation-delay: 5s; }
+.heart:nth-child(11) { left: 10%; animation-delay: 7s; }
+.heart:nth-child(12) { left: 20%; animation-delay: 9s; }
+.heart:nth-child(13) { left: 30%; animation-delay: 11s; }
+.heart:nth-child(14) { left: 40%; animation-delay: 13s; }
+.heart:nth-child(15) { left: 50%; animation-delay: 0.5s; }
+.heart:nth-child(16) { left: 60%; animation-delay: 2.5s; }
+.heart:nth-child(17) { left: 70%; animation-delay: 4.5s; }
+.heart:nth-child(18) { left: 80%; animation-delay: 6.5s; }
+.heart:nth-child(19) { left: 90%; animation-delay: 8.5s; }
+.heart:nth-child(20) { left: 8%; animation-delay: 10.5s; }
+.heart:nth-child(21) { left: 18%; animation-delay: 12.5s; }
+.heart:nth-child(22) { left: 28%; animation-delay: 1.5s; }
+.heart:nth-child(23) { left: 38%; animation-delay: 3.5s; }
+.heart:nth-child(24) { left: 48%; animation-delay: 5.5s; }
+.heart:nth-child(25) { left: 58%; animation-delay: 7.5s; }
+.heart:nth-child(26) { left: 68%; animation-delay: 9.5s; }
+.heart:nth-child(27) { left: 78%; animation-delay: 11.5s; }
+.heart:nth-child(28) { left: 88%; animation-delay: 13.5s; }
+.heart:nth-child(29) { left: 12%; animation-delay: 14s; }
+.heart:nth-child(30) { left: 92%; animation-delay: 14.5s; }
 
 /* Heading and subtext */
 .landing-heading {color:#b30059; font-size:3rem; font-weight:900; text-align:center; margin-bottom:1rem; margin-top:8rem; position:relative; z-index:10;}
@@ -101,6 +121,26 @@ div.stButton>button:hover {background-color:#ff5c7a !important; transform:scale(
 # Add floating hearts to all pages - more hearts!
 st.markdown("""
 <div class="hearts-container">
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
     <div class="heart">💖</div>
     <div class="heart">💕</div>
     <div class="heart">💗</div>
@@ -200,7 +240,7 @@ elif st.session_state.page=="photos":
         st.markdown(f'<p style="color:#b30059; font-weight:bold; text-align:center; font-size:1.2rem; margin-top:0.5rem; margin-bottom:1rem;">{caption}</p>', unsafe_allow_html=True)
         
         # Navigation buttons - centered and close together
-        btn_col1, btn_col2 = st.columns(2, gap="small")
+        btn_col1, btn_col2 = st.columns([1, 1], gap="small")
         with btn_col1:
             if st.button("⬅️ Previous", key="prev_arrow", use_container_width=True):
                 st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
