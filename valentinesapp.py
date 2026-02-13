@@ -8,7 +8,7 @@ st.markdown("""
 /* Remove top padding */
 .css-18e3th9 {padding-top:0rem; padding-bottom:0rem;}
 .stApp {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family: 'Comic Sans MS', cursive, sans-serif; 
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 30%, #ffb6c1 60%, #ff8da4 100%);
 }
 
@@ -69,18 +69,29 @@ if st.session_state.page=="home":
 # --- MESSAGE ---
 elif st.session_state.page=="message":
     st.markdown("""
-    <div style="text-align:center; color:#b30059; font-size:1.6rem; line-height:1.5;">
-    <p class="fade-part">So… I was going to play it cool.</p>
-    <p class="fade-part">But that’s clearly not happening 😏</p>
-    <p class="fade-part">I like you. And not in a subtle way.<br>In a “catching myself smiling at my phone” kind of way.</p>
-    <p class="fade-part">You've been on my mind a little more than I'd like to admit. (Don't let it get to your head lol..)</p>
-    <p class="fade-part">I like our little moments. The way our conversations shift from playful to… something else.<br>The tension. The ease. The way it feels exciting but natural.</p>
-    <p class="fade-part">Just know… I’m very aware of the effect you have on me.</p>
-    <p class="fade-part">And I don’t hate it. ❤️</p>
-    <p class="fade-part">This is still new, and I think that's my favorite part. We're still discovering each other.<br>Still learning the details. Still choosing to lean in. And I just want you to know that I've been really enjoying it.<br>Enjoying you.</p>
-    <p class="fade-part">I don't know exactly where this goes yet. But I know that right now, I'm grateful it's you I'm getting to explore this with.</p>
-    <p class="fade-part">And that feels special to me. ❤️</p>
-    </div>
+       <div style="
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #b30059;
+        ">
+            My love,<br><br>
+
+            From the very beginning, you have brought so much light into my life.
+            Every moment with you feels special, whether we're laughing over something silly
+            or just sitting quietly together.<br><br>
+
+            You make ordinary days feel extraordinary. I am endlessly grateful for
+            your kindness, your warmth, and the way you care so deeply.<br><br>
+
+            Thank you for being you. ❤️
+        </div>
     """, unsafe_allow_html=True)
     if st.button("Back"): go_to("home")
 
