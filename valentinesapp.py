@@ -26,28 +26,33 @@ st.markdown("""
 }
 .heart {
     position: absolute;
-    font-size: 1.5rem;
-    opacity: 0.5;
+    font-size: 2rem;
+    opacity: 0.6;
     animation: float-up 15s infinite ease-in;
 }
 @keyframes float-up {
     0% {
         transform: translateY(100vh) translateX(0px) rotate(0deg);
-        opacity: 0.5;
+        opacity: 0.6;
     }
     50% {
-        opacity: 0.7;
+        opacity: 0.8;
     }
     100% {
-        transform: translateY(-20vh) translateX(50px) rotate(360deg);
+        transform: translateY(-20vh) translateX(80px) rotate(360deg);
         opacity: 0;
     }
 }
-.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-.heart:nth-child(2) { left: 30%; animation-delay: 3s; }
-.heart:nth-child(3) { left: 50%; animation-delay: 6s; }
-.heart:nth-child(4) { left: 70%; animation-delay: 9s; }
-.heart:nth-child(5) { left: 90%; animation-delay: 12s; }
+.heart:nth-child(1) { left: 5%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 15%; animation-delay: 2s; }
+.heart:nth-child(3) { left: 25%; animation-delay: 4s; }
+.heart:nth-child(4) { left: 35%; animation-delay: 6s; }
+.heart:nth-child(5) { left: 45%; animation-delay: 8s; }
+.heart:nth-child(6) { left: 55%; animation-delay: 10s; }
+.heart:nth-child(7) { left: 65%; animation-delay: 12s; }
+.heart:nth-child(8) { left: 75%; animation-delay: 1s; }
+.heart:nth-child(9) { left: 85%; animation-delay: 3s; }
+.heart:nth-child(10) { left: 95%; animation-delay: 5s; }
 
 /* Heading and subtext */
 .landing-heading {color:#b30059; font-size:3rem; font-weight:900; text-align:center; margin-bottom:1rem; margin-top:8rem; position:relative; z-index:10;}
@@ -93,9 +98,14 @@ div.stButton>button:hover {background-color:#ff5c7a !important; transform:scale(
 </style>
 """, unsafe_allow_html=True)
 
-# Add floating hearts to all pages
+# Add floating hearts to all pages - more hearts!
 st.markdown("""
 <div class="hearts-container">
+    <div class="heart">❤️</div>
+    <div class="heart">💖</div>
+    <div class="heart">💕</div>
+    <div class="heart">💗</div>
+    <div class="heart">💓</div>
     <div class="heart">❤️</div>
     <div class="heart">💖</div>
     <div class="heart">💕</div>
@@ -165,7 +175,7 @@ Thank you for being you. &#10084;
 # --- PHOTOS ---
 elif st.session_state.page=="photos":
     st.markdown(
-        '<div style="text-align:center; color:#b30059; font-size:2.5rem; font-weight:900; margin-bottom:3rem; margin-top:3rem;">📸 Our Moments ❤️</div>',
+        '<div style="text-align:center; color:#b30059; font-size:2.5rem; font-weight:900; margin-bottom:2rem; margin-top:3rem;">📸 Our Moments ❤️</div>',
         unsafe_allow_html=True
     )
 
@@ -177,25 +187,35 @@ elif st.session_state.page=="photos":
     ]
     current_photo, caption = photos[st.session_state.photo_index]
 
-    # Centered image with fixed width
-    col1, col2, col3 = st.columns([1,2,1])
-    with col2:
-        st.image(current_photo, width=500)
-        st.markdown(f'<p style="color:#b30059; font-weight:bold; text-align:center; font-size:1.2rem; margin-top:1rem;">{caption}</p>', unsafe_allow_html=True)
+    # Create centered container for image, caption and buttons
+    col_left, col_center, col_right = st.columns([1,2,1])
+    
+    with col_center:
+        # Display image with smaller max height
+        st.image(current_photo, width=400)
         
-        # Navigation buttons aligned with photo
-        st.markdown("<br>", unsafe_allow_html=True)
+        # Caption
+        st.markdown(f'<p style="color:#b30059; font-weight:bold; text-align:center; font-size:1.2rem; margin-top:0.5rem; margin-bottom:1rem;">{caption}</p>', unsafe_allow_html=True)
+        
+        # Navigation buttons - centered and close together
         btn_col1, btn_col2 = st.columns(2, gap="small")
         with btn_col1:
             if st.button("⬅️ Previous", key="prev_arrow", use_container_width=True):
                 st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
+                st.rerun()
         with btn_col2:
             if st.button("Next ➡️", key="next_arrow", use_container_width=True):
                 st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
+                st.rerun()
 
     st.markdown("<br><br>", unsafe_allow_html=True)
-    if st.button("🏠 Back"):
-        go_to("home")
+    
+    # Back button centered
+    col1, col2, col3 = st.columns([1,1,1])
+    with col2:
+        if st.button("🏠 Back", use_container_width=True):
+            go_to("home")
+            st.rerun()
 
 
 # --- SONG ---
