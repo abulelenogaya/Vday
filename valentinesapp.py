@@ -1,24 +1,6 @@
 import streamlit as st
 
 st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
-st.markdown("""
-<style>
-
-/* Change dark markdown/navy container to soft pink */
-div[data-testid="stMarkdownContainer"] {
-    background-color: #ffe6f2 !important;
-    border-radius: 20px;
-    padding: 35px !important;
-}
-
-/* Ensure no extra dark layers */
-div[data-testid="stMarkdownContainer"] > div {
-    background: transparent !important;
-}
-
-</style>
-""", unsafe_allow_html=True)
-
 
 # --- CSS ---
 st.markdown("""
@@ -93,23 +75,22 @@ if st.session_state.page == "home":
         go_to("extra")
 
 # --- MESSAGE ---
-elif st.session_state.page=="message":
+elif st.session_state.page == "message":
 
     st.markdown("""
         <div style="
-            background-color: white;
-            padding: 35px;
-            border-radius: 20px;
             max-width: 700px;
             margin: 40px auto;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            padding: 30px;
+            border-radius: 20px;
+            background: #ffe6f2;
         ">
-            <p style="
+            <div style="
                 text-align: justify;
                 font-size: 1.05rem;
                 line-height: 1.8;
                 color: #ff4da6;
-                margin: 0;
+                background: transparent;
             ">
                 My love,<br><br>
 
@@ -121,12 +102,13 @@ elif st.session_state.page=="message":
                 your kindness, your warmth, and the way you care so deeply.<br><br>
 
                 Thank you for being you. ❤️
-            </p>
+            </div>
         </div>
     """, unsafe_allow_html=True)
 
     if st.button("Back"):
         go_to("home")
+
 
 
 
