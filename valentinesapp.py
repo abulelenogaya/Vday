@@ -197,18 +197,25 @@ elif st.session_state.page == "message":
 ">
 So... I was going to play it cool.<br>
 But that's clearly not happening 😏<br><br>
+
 I like you. And not in a subtle way.<br>
 In a "catching myself smiling at my phone" kind of way.<br><br>
+
 You've been on my mind a little more than I'd like to admit. (Don't let it get to your head lol..)<br><br>
+
 I like our little moments. The way our conversations shift from playful to... something else.<br>
 The tension. The ease. The way it feels exciting but natural.<br><br>
+
 Just know... I'm very aware of the effect you have on me.<br>
 And I don't hate it. &#10084;<br><br>
+
 This is still new, and I think that's my favorite part. We're still discovering each other.<br>
 Still learning the details. Still choosing to lean in. And I just want you to know that I've been really enjoying it.<br>
 Enjoying you.<br><br>
+
 I don't know exactly where this goes yet. But I know that right now, I'm grateful it's you I'm getting to explore this with.<br>
 And that feels special to me.<br><br>
+
 &#10084;
 </div>
 """, unsafe_allow_html=True)
@@ -225,10 +232,10 @@ elif st.session_state.page=="photos":
     )
 
     photos = [
-        ("photo1.jpeg","First cute moment"),
-        ("photo2.jpeg","Our silly faces"),
-        ("photo3.jpeg","Memories together"),
-        ("photo4.jpeg","Funny times ❤️")
+        ("photo1.jpeg","I still can't believe I cried like this after the first link 🤭"),
+        ("photo2.jpeg","We look a little too cute here ❤️"),
+        ("photo3.jpeg","I always have fun with you🫶"),
+        ("photo4.jpeg","My main character😘")
     ]
     current_photo, caption = photos[st.session_state.photo_index]
 
@@ -268,7 +275,8 @@ elif st.session_state.page=="photos":
 
 # --- SONG ---
 elif st.session_state.page=="song":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:2.5rem; font-weight:900; margin-top:5rem; margin-bottom:2rem;">🎵 My Song for You... reminds me of you ❤️</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:2.5rem; font-weight:900; margin-top:5rem; margin-bottom:1rem;">🎵 My Song for You</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#ff5c7a; font-size:1.3rem; font-weight:600; margin-bottom:2rem;">This one reminds me of you... ❤️<br>It says - you are my smile. you are my love.</div>', unsafe_allow_html=True)
     
     # Spotify embed centered
     col1, col2, col3 = st.columns([1, 2, 1])
