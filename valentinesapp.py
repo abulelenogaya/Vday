@@ -10,7 +10,36 @@ st.markdown("""
 .stApp {
     font-family: 'Comic Sans MS', cursive, sans-serif; 
     background: linear-gradient(135deg, #ffe6f0 0%, #ffc0cb 30%, #ffb6c1 60%, #ff8da4 100%);
+    position: relative;
+    overflow: hidden;
 }
+
+/* Floating hearts animation */
+.heart {
+    position: fixed;
+    font-size: 2rem;
+    opacity: 0.6;
+    animation: float-up 15s infinite ease-in;
+    z-index: 1;
+}
+@keyframes float-up {
+    0% {
+        transform: translateY(100vh) translateX(0px) rotate(0deg);
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 3s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 6s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 9s; }
+.heart:nth-child(5) { left: 90%; animation-delay: 12s; }
 
 /* Heading and subtext */
 .landing-heading {color:#b30059; font-size:3rem; font-weight:900; text-align:center; margin-bottom:1rem; margin-top:8rem;}
@@ -46,6 +75,15 @@ div.stButton>button:hover {background-color:#ff5c7a !important; transform:scale(
 .fade-part:nth-child(10){animation-delay:9.5s;}
 @keyframes fadeIn {0%{opacity:0;}100%{opacity:1;}}
 </style>
+""", unsafe_allow_html=True)
+
+# Add floating hearts to all pages
+st.markdown("""
+<div class="heart">❤️</div>
+<div class="heart">💖</div>
+<div class="heart">💕</div>
+<div class="heart">💗</div>
+<div class="heart">💓</div>
 """, unsafe_allow_html=True)
 
 # --- Session State ---
@@ -109,7 +147,7 @@ Thank you for being you. &#10084;
 # --- PHOTOS ---
 elif st.session_state.page=="photos":
     st.markdown(
-        '<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:2rem; margin-top:3rem;">📸 Our Moments ❤️</div>',
+        '<div style="text-align:center; color:#b30059; font-size:2.5rem; font-weight:900; margin-bottom:3rem; margin-top:3rem;">📸 Our Moments ❤️</div>',
         unsafe_allow_html=True
     )
 
@@ -121,21 +159,23 @@ elif st.session_state.page=="photos":
     ]
     current_photo, caption = photos[st.session_state.photo_index]
 
-    # Centered image using streamlit
+    # Centered image with fixed width
     col1, col2, col3 = st.columns([1,2,1])
     with col2:
-        st.image(current_photo, caption=caption, use_container_width=True)
+        st.image(current_photo, width=500)
+        st.markdown(f'<p style="color:#b30059; font-weight:bold; text-align:center; font-size:1.2rem; margin-top:1rem;">{caption}</p>', unsafe_allow_html=True)
+        
+        # Navigation buttons aligned with photo
+        st.markdown("<br>", unsafe_allow_html=True)
+        btn_col1, btn_col2 = st.columns(2, gap="small")
+        with btn_col1:
+            if st.button("⬅️ Previous", key="prev_arrow", use_container_width=True):
+                st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
+        with btn_col2:
+            if st.button("Next ➡️", key="next_arrow", use_container_width=True):
+                st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
 
-    # Horizontal arrows centered below image
-    col1, col2 = st.columns([1,1])
-    with col1:
-        if st.button("⬅️ Previous", key="prev_arrow"):
-            st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
-    with col2:
-        if st.button("Next ➡️", key="next_arrow"):
-            st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
-
-    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<br><br>", unsafe_allow_html=True)
     if st.button("🏠 Back"):
         go_to("home")
 
@@ -148,29 +188,35 @@ elif st.session_state.page=="song":
 
 # --- EXTRA ---
 elif st.session_state.page=="extra":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-top:5rem; margin-bottom:3rem;">✨ Something Extra... Don\'t Press This 😏</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:2.5rem; font-weight:900; margin-top:5rem; margin-bottom:3rem;">✨ Something Extra... Don\'t Press This 😏</div>', unsafe_allow_html=True)
     
-    # Add some mystery text
-    st.markdown('<div style="text-align:center; color:#ff5c7a; font-size:1.2rem; margin-bottom:3rem;">I warned you... but you never listen 😄</div>', unsafe_allow_html=True)
+    # Add some mystery text - centered
+    st.markdown('<div style="text-align:center; color:#ff5c7a; font-size:1.3rem; margin-bottom:3rem; font-weight:600;">I warned you... but you never listen 😄</div>', unsafe_allow_html=True)
     
-    # Center the button
-    col1, col2, col3 = st.columns([1,1,1])
-    with col2:
-        if st.button("🚫 Do Not Press 🚫", key="danger_button"):
-            st.session_state.show_extra = True
+    # Initialize session state for showing extra content
+    if "show_extra" not in st.session_state:
+        st.session_state.show_extra = False
+    
+    # Center the button - only show if image hasn't been revealed
+    if not st.session_state.show_extra:
+        col1, col2, col3 = st.columns([1,1,1])
+        with col2:
+            if st.button("🚫 Do Not Press 🚫", key="danger_button", use_container_width=True):
+                st.session_state.show_extra = True
+                st.rerun()
     
     # Show image centered if button was pressed
-    if "show_extra" in st.session_state and st.session_state.show_extra:
-        st.markdown("<br><br>", unsafe_allow_html=True)
+    if st.session_state.show_extra:
+        st.markdown("<br>", unsafe_allow_html=True)
         col1, col2, col3 = st.columns([1,2,1])
         with col2:
             st.image("funny.jpeg", use_container_width=True)
-            st.markdown('<div style="text-align:center; color:#b30059; font-size:1.3rem; margin-top:1rem;">😂 I told you not to press it! 😂</div>', unsafe_allow_html=True)
+            st.markdown('<div style="text-align:center; color:#b30059; font-size:1.4rem; font-weight:700; margin-top:1.5rem;">😂 I told you not to press it! 😂</div>', unsafe_allow_html=True)
     
-    st.markdown("<br><br>", unsafe_allow_html=True)
+    st.markdown("<br><br><br>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1,1,1])
     with col2:
-        if st.button("🏠 Back to Home"):
-            if "show_extra" in st.session_state:
-                del st.session_state.show_extra
+        if st.button("🏠 Back to Home", use_container_width=True):
+            st.session_state.show_extra = False
             go_to("home")
+            st.rerun()
