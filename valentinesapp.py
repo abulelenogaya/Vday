@@ -1,20 +1,6 @@
 import streamlit as st
 
 st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
-st.markdown("""
-<style>
-/* Remove default dark background from markdown blocks */
-.stMarkdown, 
-.stMarkdown div {
-    background: transparent !important;
-}
-
-/* Remove dark background from any nested elements */
-div[data-testid="stMarkdownContainer"] {
-    background-color: transparent !important;
-}
-</style>
-""", unsafe_allow_html=True)
 
 # --- CSS ---
 st.markdown("""
@@ -100,11 +86,12 @@ elif st.session_state.page=="message":
             margin: 40px auto;
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
         ">
-            <div style="
+            <p style="
                 text-align: justify;
                 font-size: 1.05rem;
                 line-height: 1.8;
                 color: #ff4da6;
+                margin: 0;
             ">
                 My love,<br><br>
 
@@ -116,12 +103,13 @@ elif st.session_state.page=="message":
                 your kindness, your warmth, and the way you care so deeply.<br><br>
 
                 Thank you for being you. ❤️
-            </div>
+            </p>
         </div>
     """, unsafe_allow_html=True)
 
     if st.button("Back"):
         go_to("home")
+
 
 
 # --- PHOTOS ---
