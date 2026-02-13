@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="For You ❤️", page_icon="💌", layout="wide")
+st.set_page_config(page_title="For You", page_icon="💌", layout="wide")
 
 # --- CSS ---
 st.markdown("""
@@ -58,20 +58,20 @@ def go_to(page):
 # --- HOME ---
 if st.session_state.page == "home":
     st.markdown(
-        '<div class="landing-heading">Hey you <span class="floating-heart">❤️</span><span class="floating-heart">💖</span></div>',
+        '<div class="landing-heading">Hey you <span class="floating-heart">&#10084;</span><span class="floating-heart">&#128150;</span></div>',
         unsafe_allow_html=True
     )
-    st.markdown('<div class="landing-subtext">Open this... if you dare 😏</div>', unsafe_allow_html=True)
+    st.markdown('<div class="landing-subtext">Open this... if you dare</div>', unsafe_allow_html=True)
 
     # Horizontal buttons
     col1, col2, col3, col4 = st.columns([1,1,1,1], gap="medium")
-    if col1.button("💌 A Message"):
+    if col1.button("A Message"):
         go_to("message")
-    if col2.button("🎵 My Song for You"):
+    if col2.button("My Song for You"):
         go_to("song")
-    if col3.button("📸 Our Moments"):
+    if col3.button("Our Moments"):
         go_to("photos")
-    if col4.button("✨ Something Extra"):
+    if col4.button("Something Extra"):
         go_to("extra")
 
 # --- MESSAGE ---
@@ -98,7 +98,7 @@ or just sitting quietly together.<br><br>
 You make ordinary days feel extraordinary. I am endlessly grateful for
 your kindness, your warmth, and the way you care so deeply.<br><br>
 
-Thank you for being you. ❤️
+Thank you for being you. &#10084;
 </div>
 """, unsafe_allow_html=True)
 
@@ -109,7 +109,7 @@ Thank you for being you. ❤️
 # --- PHOTOS ---
 elif st.session_state.page=="photos":
     st.markdown(
-        '<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:1rem;">📸 Our Moments ❤️</div>',
+        '<div style="text-align:center; color:#b30059; font-size:1.7rem; margin-bottom:1rem;">Our Moments</div>',
         unsafe_allow_html=True
     )
 
@@ -117,7 +117,7 @@ elif st.session_state.page=="photos":
         ("photo1.jpeg","First cute moment"),
         ("photo2.jpeg","Our silly faces"),
         ("photo3.jpeg","Memories together"),
-        ("photo4.jpeg","Funny times ❤️")
+        ("photo4.jpeg","Funny times")
     ]
     current_photo, caption = photos[st.session_state.photo_index]
 
@@ -132,10 +132,10 @@ elif st.session_state.page=="photos":
     # Horizontal arrows centered below image
     col1, col2 = st.columns([1,1])
     with col1:
-        if st.button("←", key="prev_arrow"):
+        if st.button("Previous", key="prev_arrow"):
             st.session_state.photo_index = (st.session_state.photo_index - 1) % len(photos)
     with col2:
-        if st.button("→", key="next_arrow"):
+        if st.button("Next", key="next_arrow"):
             st.session_state.photo_index = (st.session_state.photo_index + 1) % len(photos)
 
     if st.button("Back"):
@@ -144,12 +144,13 @@ elif st.session_state.page=="photos":
 
 # --- SONG ---
 elif st.session_state.page=="song":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">🎵 My Song for You... reminds me of you ❤️</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">My Song for You... reminds me of you</div>', unsafe_allow_html=True)
     if st.button("Back"): go_to("home")
 
 # --- EXTRA ---
 elif st.session_state.page=="extra":
-    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">✨ Don't Press This... 😏</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center; color:#b30059; font-size:1.7rem;">Something Extra... Don\'t Press This</div>', unsafe_allow_html=True)
     col1,col2 = st.columns(2)
-    if col1.button("Do Not Press 😏"): col1.image("funny.jpeg")
+    if col1.button("Do Not Press"):
+        col1.image("funny.jpeg")
     if st.button("Back"): go_to("home")
